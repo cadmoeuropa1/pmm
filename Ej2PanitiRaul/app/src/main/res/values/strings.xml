@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Ej2PanitiRaul</string>
+    <string name="action_1">LLAMAR</string>
+    <string name="action_2">CORREO</string>
+    <string name="content_description_media">Monument Image</string>
+</resources>

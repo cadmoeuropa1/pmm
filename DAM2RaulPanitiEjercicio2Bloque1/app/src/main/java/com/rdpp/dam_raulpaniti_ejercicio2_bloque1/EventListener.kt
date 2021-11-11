@@ -1,6 +1,5 @@
 package com.rdpp.dam_raulpaniti_ejercicio2_bloque1
 
-import android.content.Intent
 
 interface EventListener {
     fun onClickListener(monument: Monument, position: Int) {

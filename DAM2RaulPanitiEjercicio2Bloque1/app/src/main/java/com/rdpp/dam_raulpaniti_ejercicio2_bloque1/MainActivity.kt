@@ -11,7 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.mse.dam_raulpaniti_ejercicio2_bloque1.databinding.ActivityMainBinding
+import com.mse.dam2_raulpaniti_ejercicio2_bloque1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), EventListener {
 

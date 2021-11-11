@@ -2,7 +2,8 @@ package com.rdpp.dam_raulpaniti_ejercicio2_bloque1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mse.dam_raulpaniti_ejercicio2_bloque1.databinding.ActivityMonumentInfoBinding
+import com.mse.dam2_raulpaniti_ejercicio2_bloque1.databinding.ActivityMonumentInfoBinding
+
 
 class MonumentInfo : AppCompatActivity() {
     private lateinit var binding: ActivityMonumentInfoBinding

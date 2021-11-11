@@ -1,4 +1,4 @@
-package com.rdpp.dam_raulpaniti_ejercicio2_bloque1
+package com.rdpp.ej2panitiraul
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.mse.dam_raulpaniti_ejercicio2_bloque1.databinding.MonumentCardLayoutBinding
+import com.rdpp.ej2panitiraul.databinding.MonumentCardLayoutBinding
 
 class MonumentAdapter(private val monuments: List<Monument>, private val evt: EventListener) :
     RecyclerView.Adapter<MonumentAdapter.ViewHolder>() {
@@ -58,4 +58,3 @@ class MonumentAdapter(private val monuments: List<Monument>, private val evt: Ev
 
     override fun getItemCount(): Int = monuments.size
 }
-
