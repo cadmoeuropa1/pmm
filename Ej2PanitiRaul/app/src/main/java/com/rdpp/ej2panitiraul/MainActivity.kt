@@ -112,17 +112,22 @@ class MainActivity : AppCompatActivity(), EventListener {
             val intentCall = Intent(Intent.ACTION_CALL, monument.phoneNumber)
             startActivity(intentCall)
         }
-
     }
+
 
     @SuppressLint("IntentReset")
     override fun sendMail(monument: Monument, position: Int) {
-        val mail = monument.mail
-        val intentMail = Intent(Intent.ACTION_SEND)
-        intentMail.data = Uri.parse("mailto:")
-        intentMail.type = "text/plain"
-        intentMail.putExtra(Intent.EXTRA_EMAIL, mail)
+        val TO = arrayOf(monument.mail)
+        val CC = arrayOf("")
+        val intentEmail = Intent(Intent.ACTION_SEND)
+        intentEmail.setData(Uri.parse("mailto:"));
+        intentEmail.setType("text/plain");
+        intentEmail.putExtra(Intent.EXTRA_EMAIL, TO);
+        intentEmail.putExtra(Intent.EXTRA_CC, CC);
+        intentEmail.putExtra(Intent.EXTRA_SUBJECT, "CONSULTA");
+        intentEmail.putExtra(Intent.EXTRA_TEXT, getString(R.string.mail_content));
 
-        startActivity(Intent.createChooser(intentMail, "Send Mail"))
+        startActivity(Intent.createChooser(intentEmail, "Send Mail"))
     }
+
 }

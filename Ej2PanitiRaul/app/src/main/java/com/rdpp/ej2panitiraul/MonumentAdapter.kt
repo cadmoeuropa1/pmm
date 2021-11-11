@@ -28,17 +28,17 @@ class MonumentAdapter(private val monuments: List<Monument>, private val evt: Ev
             binding.txtMonument.text = monument.name
             binding.monumentDirection.text = monument.location
             Glide.with(context).load(monument.image).centerCrop().diskCacheStrategy(
-                DiskCacheStrategy.ALL).into(binding.imgMonument)
-            setLongListener(monument,(position+1))
+                DiskCacheStrategy.ALL
+            ).into(binding.imgMonument)
+            setLongListener(monument, (position + 1))
             binding.btnCall.setOnClickListener {
-                evt.call(monument,position)
+                evt.call(monument, position)
             }
             binding.btnMail.setOnClickListener {
-                evt.sendMail(monument,position)
+                evt.sendMail(monument, position)
             }
         }
     }
-
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -48,6 +48,7 @@ class MonumentAdapter(private val monuments: List<Monument>, private val evt: Ev
                 evt.onClickListener(monument, position)
             }
         }
+
         fun setLongListener(monument: Monument, position: Int) {
             binding.card.setOnLongClickListener {
                 binding.card.setChecked(!binding.card.isChecked)

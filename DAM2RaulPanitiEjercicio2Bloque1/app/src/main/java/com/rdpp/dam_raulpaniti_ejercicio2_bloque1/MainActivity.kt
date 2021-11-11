@@ -99,8 +99,7 @@ class MainActivity : AppCompatActivity(), EventListener {
                 Snackbar.LENGTH_LONG).show()
             //conceder permiso
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.CALL_PHONE)
-            ) {
+                    Manifest.permission.CALL_PHONE)) {
             } else {
                 ActivityCompat.requestPermissions(this,
                     arrayOf(Manifest.permission.CALL_PHONE), 123)
