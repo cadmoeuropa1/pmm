@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Burgos Monuments</string>
+    <string name="content_description_media">Monument Image</string>
+    <string name="action_1">LLAMAR</string>
+    <string name="action_2">CORREO</string>
+
+</resources>
