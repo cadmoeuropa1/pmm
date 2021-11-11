@@ -1,4 +1,4 @@
-package com.mse.dam2_raulpaniti_ejercicio2_bloque1
+package com.rdpp.dam_raulpaniti_ejercicio2_bloque1
 
 import android.net.Uri
 import android.os.Parcelable

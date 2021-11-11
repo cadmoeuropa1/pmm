@@ -1,4 +1,4 @@
-package com.mse.dam2_raulpaniti_ejercicio2_bloque1
+package com.rdpp.dam_raulpaniti_ejercicio2_bloque1
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -7,12 +7,11 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.mse.dam2_raulpaniti_ejercicio2_bloque1.databinding.ActivityMainBinding
+import com.mse.dam_raulpaniti_ejercicio2_bloque1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), EventListener {
 

@@ -1,4 +1,4 @@
-package com.mse.dam2_raulpaniti_ejercicio2_bloque1
+package com.mse.dam_raulpaniti_ejercicio2_bloque1
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
