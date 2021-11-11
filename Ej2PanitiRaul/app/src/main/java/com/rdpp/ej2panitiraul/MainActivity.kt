@@ -14,9 +14,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.rdpp.ej2panitiraul.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), EventListener {
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var monumentAdapter: MonumentAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -83,9 +85,10 @@ class MainActivity : AppCompatActivity(), EventListener {
         return monuments
     }
 
-    override fun onLongClickListener(monument: Monument, position: Int) {
+    override fun onLongClick(monument: Monument, position: Int){
         val intent = Intent(this, MonumentInfo::class.java)
         intent.putExtra("monument", monument)
+        startActivity(intent)
     }
 
     override fun call(monument: Monument, position: Int) {

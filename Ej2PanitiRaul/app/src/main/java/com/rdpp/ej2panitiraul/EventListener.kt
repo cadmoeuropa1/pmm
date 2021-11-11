@@ -5,7 +5,7 @@ interface EventListener {
 
     }
 
-    fun onLongClickListener(monument: Monument, position: Int) {
+    fun onLongClick(monument: Monument, position: Int) {
 
     }
 

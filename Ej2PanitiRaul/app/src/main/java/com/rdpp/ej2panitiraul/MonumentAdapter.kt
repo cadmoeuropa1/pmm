@@ -37,6 +37,10 @@ class MonumentAdapter(private val monuments: List<Monument>, private val evt: Ev
             binding.btnMail.setOnClickListener {
                 evt.sendMail(monument, position)
             }
+            binding.card.setOnLongClickListener{
+                evt.onLongClick(monument, position)
+                true
+            }
         }
     }
 
