@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rdpp.EJ1-Paniti-Raul.MainActivity">
+    tools:context="com.rdpp.dam2_raul_paniti_ejercicio1_bloque1.MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtUser"

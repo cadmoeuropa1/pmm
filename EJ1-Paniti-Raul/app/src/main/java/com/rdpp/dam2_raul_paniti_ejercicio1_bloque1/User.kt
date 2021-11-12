@@ -1,4 +1,4 @@
-package com.rdpp.`EJ1-Paniti-Raul`
+package com.rdpp.dam2_raul_paniti_ejercicio1_bloque1
 
 class User(login: String,  pass: String) {
     var log: String

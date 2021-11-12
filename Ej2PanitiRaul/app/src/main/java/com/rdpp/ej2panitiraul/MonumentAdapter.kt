@@ -55,7 +55,7 @@ class MonumentAdapter(private val monuments: List<Monument>, private val evt: Ev
 
         fun setLongListener(monument: Monument, position: Int) {
             binding.card.setOnLongClickListener {
-                binding.card.setChecked(!binding.card.isChecked)
+                binding.card.isChecked = !binding.card.isChecked
                 true
             }
         }

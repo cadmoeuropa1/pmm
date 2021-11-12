@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DAM2RaulPanitiEjercicio1Bloque1">
         <activity
-            android:name="com.rdpp.EJ1-Paniti-Raul.ProductList"
+            android:name="com.rdpp.dam2_raul_paniti_ejercicio1_bloque1.ProductList"
             android:exported="false" />
         <activity
-            android:name="com.rdpp.EJ1-Paniti-Raul.MainActivity"
+            android:name="com.rdpp.dam2_raul_paniti_ejercicio1_bloque1.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

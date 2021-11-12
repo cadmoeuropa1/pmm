@@ -1,16 +1,12 @@
-package com.rdpp.`EJ1-Paniti-Raul`
+package com.rdpp.dam2_raul_paniti_ejercicio1_bloque1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isEmpty
 import com.bumptech.glide.Glide
-import com.bumptech.glide.GlideBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.rdpp.dam2_raul_paniti_ejercicio1_bloque1.R
 import com.rdpp.dam2_raul_paniti_ejercicio1_bloque1.databinding.ActivityProductListBinding
-import java.io.IOException
 import java.lang.NumberFormatException
-import java.text.ParseException
 
 class ProductList : AppCompatActivity() {
     //Creo una lista de Productos, antes de que se cree la Activity
@@ -38,36 +34,53 @@ class ProductList : AppCompatActivity() {
 
         binding.btnSearch.setOnClickListener {
             var product = searchProduct()
-            Glide.with(binding.root)
-                .load(products.get(product).image)
-                .placeholder(R.drawable.ic_error)
-                .into(binding.imgProduct)
+            if (product != -1) {
+                Glide.with(binding.root)
+                    .load(products.get(product).image)
+                    .error(R.drawable.ic_error)
+                    .placeholder(R.drawable.ic_error)
+                    .into(binding.imgProduct)
 
-            binding.txtProduct.text = products.get(product).name
-            binding.txtLink.text = products.get(product).url
+                binding.txtProduct.text = products.get(product).name
+                binding.txtLink.text = products.get(product).url
+            } else {
+                binding.txtLink.text = ""
+                binding.txtProduct.text = ""
+            }
         }
     }
 
-    private fun searchProduct(): Int {
+    fun searchProduct(): Int {
         var pos: Int = 0
         var codeFound: Int = 0
         var found: Boolean = false
         try {
-            if (binding.txtCode.isEmpty()) {
-                Snackbar.make(binding.root, "El campo no puede estar vacío", Snackbar.LENGTH_SHORT).show()
+            if (binding.etxtCode.text.toString() == "") {
+                Snackbar.make(binding.root,
+                    "El campo no puede estar vacío",
+                    Snackbar.LENGTH_SHORT).show()
+                codeFound = -1
             } else {
                 var code: Int = binding.etxtCode.text.toString().toInt()
-                while (pos < products.size && !found ) {
-                    if (code == products.get(pos).code) {
-                        codeFound = products.get(pos).code
-                        found = true
+                if (code < 0 || code > products.size) {
+                    Snackbar.make(binding.root,
+                        "Código de producto no encontrado",
+                        Snackbar.LENGTH_LONG).show()
+                    codeFound = -1
+                } else {
+                    while (pos < products.size && !found) {
+                        if (code == products.get(pos).code) {
+                            codeFound = products.get(pos).code
+                            found = true
+                        }
+                        pos++
                     }
-                    pos++
                 }
             }
         } catch (exception: NumberFormatException) {
             Snackbar.make(binding.root, "Código de producto no válido", Snackbar.LENGTH_SHORT)
                 .show()
+            codeFound = -1
         }
         return codeFound
     }

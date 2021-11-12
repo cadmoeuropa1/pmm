@@ -1,10 +1,8 @@
-package com.rdpp.`EJ1-Paniti-Raul`
+package com.rdpp.dam2_raul_paniti_ejercicio1_bloque1
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.rdpp.dam2_raul_paniti_ejercicio1_bloque1.databinding.ActivityMainBinding
 import java.io.IOException

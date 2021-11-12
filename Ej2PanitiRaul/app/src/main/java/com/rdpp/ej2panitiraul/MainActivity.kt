@@ -32,48 +32,48 @@ class MainActivity : AppCompatActivity(), EventListener {
     private fun getMonuments(): MutableList<Monument> {
         val monuments = mutableListOf<Monument>()
         val monument1 = Monument(
-            "https://www.hotelciudaddeburgos.com/files/catedral-de-burgos.jpg",
-            "Catedral de Burgos",
-            "Plaza de Santa María, s/n",
-            "info@catedraldeburgos.es",
-            Uri.parse("tel:649785940"),
-            "Catedral de Burgos. Ha sido destruida 2 veces"
+            getString(R.string.image_1),
+            getString(R.string.name_1),
+            getString(R.string.location_1),
+            getString(R.string.mail_1),
+            Uri.parse(getString(R.string.phone_1)),
+            getString(R.string.description_1)
         )
         val monument2 =
             Monument(
-                "https://www.terranostrum.es/images/content/full/arco-santa-maria-burgos-1.jpg",
-                "Arco de Santa María",
-                "Plaza Rey San Fernando, 9",
-                "",
-                Uri.parse("tel:947288868"),
-                "El Arco de Santa María es uno de los monumentos más emblemáticos de la ciudad de Burgos"
+                getString(R.string.image_2),
+                getString(R.string.name_2),
+                getString(R.string.location_2),
+                getString(R.string.mail_2),
+                Uri.parse(getString(R.string.phone_2)),
+                getString(R.string.description_2)
             )
         val monument3 =
             Monument(
-                "https://www.laguiago.com/wp-content/uploads/2015/09/paseo-del-espolon-min.jpg",
-                "Paso del Espolón",
-                "Paseo del Espolón",
-                "",
+                getString(R.string.image_3),
+                getString(R.string.name_3),
+                getString(R.string.location_3),
+                getString(R.string.mail_3),
                 Uri.parse(""),
-                "Este paseo empieza desde el Teatro Principal, justo en frente de la estatua del Cid y llega hasta el Arco de Santamaría. Los árboles a cada lado del paseo dan un toque especial en cada estación a este paseo, por lo que siempre es muy agradable"
+                getString(R.string.description_3)
             )
         val monument4 =
             Monument(
-                "https://www.guiasturisticosburgos.com/media/galerias/monasterio-de-las-huelgas-id-603.jpg",
-                "Monasterio de las Huelgas",
-                "Plaza Compás, s/n",
-                "info@patrimonionacional.es",
-                Uri.parse("tel:947288868"),
-                "El monasterio de Santa María la Real de las Huelgas, conocido popularmente como monasterio de las Huelgas es un monasterio de la congregación de monasterios de monjas cistercienses de San Bernardo"
+                getString(R.string.image_4),
+                getString(R.string.name_4),
+                getString(R.string.location_4),
+                getString(R.string.mail_4),
+                Uri.parse(getString(R.string.phone_4)),
+                getString(R.string.description_4)
             )
         val monument5 =
             Monument(
-                "https://www.terranostrum.es/images/content/full/Castillo-burgos-1.jpg",
-                "Castillo de Burgos",
-                "Cerro de San Miguel, s/n",
-                "turismo@aytoburgos.es",
-                Uri.parse("tel:947288874"),
-                "El castillo de Burgos es una fortaleza situada en la cumbre del cerro del Castillo, elevado 75 m sobre el nivel de la ciudad. La primera torre fue levantada por el conde Diego Porcelos en los tiempos de la Reconquista, en el año 884"
+                getString(R.string.image_5),
+                getString(R.string.name_5),
+                getString(R.string.location_5),
+                getString(R.string.mail_5),
+                Uri.parse(getString(R.string.phone_5)),
+                getString(R.string.description_5)
             )
 
         monuments.add(monument1)
@@ -85,18 +85,19 @@ class MainActivity : AppCompatActivity(), EventListener {
         return monuments
     }
 
-    override fun onLongClick(monument: Monument, position: Int){
+    override fun onLongClick(monument: Monument, position: Int) {
         val intent = Intent(this, MonumentInfo::class.java)
         intent.putExtra("monument", monument)
         startActivity(intent)
     }
 
     override fun call(monument: Monument, position: Int) {
+        val phoneNumber = monument.phoneNumber
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) !=
             PackageManager.PERMISSION_GRANTED
         ) {
             Snackbar.make(
-                binding.root, "Call permit is not conceded",
+                binding.root, getString(R.string.permit_error),
                 Snackbar.LENGTH_LONG
             ).show()
             //conceder permiso
@@ -112,8 +113,14 @@ class MainActivity : AppCompatActivity(), EventListener {
                 )
             }
         } else {
-            val intentCall = Intent(Intent.ACTION_CALL, monument.phoneNumber)
-            startActivity(intentCall)
+            if (phoneNumber.toString() == "") {
+                Snackbar.make(binding.root,
+                    getString(R.string.no_phone_number_error),
+                    Snackbar.LENGTH_SHORT).show()
+            } else {
+                val intentCall = Intent(Intent.ACTION_CALL, phoneNumber)
+                startActivity(intentCall)
+            }
         }
     }
 
@@ -127,7 +134,7 @@ class MainActivity : AppCompatActivity(), EventListener {
         intentEmail.setType("text/plain");
         intentEmail.putExtra(Intent.EXTRA_EMAIL, TO);
         intentEmail.putExtra(Intent.EXTRA_CC, CC);
-        intentEmail.putExtra(Intent.EXTRA_SUBJECT, "CONSULTA");
+        intentEmail.putExtra(Intent.EXTRA_SUBJECT, "CONSULT");
         intentEmail.putExtra(Intent.EXTRA_TEXT, getString(R.string.mail_content));
 
         startActivity(Intent.createChooser(intentEmail, "Send Mail"))
