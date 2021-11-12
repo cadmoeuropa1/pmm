@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             //Validaremos el usuario por medio del método Validar()
-            var user = Validate()
+            val user = Validate()
             if (user !=-1) {
                 Snackbar.make(binding.root, "Usuario Validado", Snackbar.LENGTH_SHORT)
                     .show()
@@ -47,13 +47,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun Validate(): Int {
         var user = 0
-        try {
-            var userLog = User(binding.txtLogin.text.toString(), binding.txtPass.text.toString())
+        //try {
+            val userLog = User(binding.txtLogin.text.toString(), binding.txtPass.text.toString())
             user = users.indexOf(userLog)
-        } catch (exception: IOException) {
+        //} catch (exception: IOException) {
+            if(user == -1)
             Snackbar.make(binding.root, "Formato incorrecto", Snackbar.LENGTH_SHORT)
                 .show()
-        }
+        //}
         return user
     }
 
