@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Disposicion2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="pro_mov">programación de móviles</string>
+    <string name="segundo">2º DAM</string>
+    <string name="btn">Boton</string>
+    <string name="texto">Texto</string>
+    <string name="imagen_1">Imagen 1</string>
+    <string name="escribe_algo">Escribe algo</string>
+    <string name="constraints">Constraints</string>
+</resources>

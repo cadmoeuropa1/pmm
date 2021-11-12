@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SolicitudPermisos</string>
+    <string name="button_webpage">Abrir una página web</string>
+    <string name="button_callphone">Realizar una llamada telefónica</string>
+    <string name="titulopermiso">Permiso para llamar</string>
+    <string name="explicacionpermiso">Este permiso sirve para conceder permiso a las llamadas</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+
+</resources>

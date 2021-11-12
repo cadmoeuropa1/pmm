@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Kotlin/MDCclase/app/src/main/res/drawable/ic_add_task.xml" value="0.10092592592592593" />
+        <entry key="..\:/Kotlin/MDCclase/app/src/main/res/layout/activity_scrolling.xml" value="0.25" />
+        <entry key="..\:/Kotlin/MDCclase/app/src/main/res/layout/content_scrolling.xml" value="0.25" />
+        <entry key="..\:/pmm/MDCclase/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.2253044654939107" />
+        <entry key="..\:/pmm/MDCclase/app/src/main/res/layout/activity_scrolling.xml" value="0.1" />
+        <entry key="..\:/pmm/MDCclase/app/src/main/res/layout/content_scrolling.xml" value="0.1734375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

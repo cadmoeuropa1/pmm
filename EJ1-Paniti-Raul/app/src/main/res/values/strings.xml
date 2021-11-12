@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DAM2-Raul-Paniti-Ejercicio1-Bloque1</string>
+    <string name="label">Username</string>
+    <string name="label2">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="code">Código del producto</string>
+    <string name="search">BUSCAR</string>
+    <string name="black_friday_products">PRODUCTOS BLACK FRIDAY</string>
+    <string name="product_image">IMAGEN PRODUCTO</string>
+    <string name="helper_text">Los productos varían del 0 al 2</string>
+</resources>
