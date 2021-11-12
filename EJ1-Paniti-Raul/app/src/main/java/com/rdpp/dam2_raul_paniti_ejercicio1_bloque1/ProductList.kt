@@ -1,12 +1,10 @@
 package com.rdpp.dam2_raul_paniti_ejercicio1_bloque1
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.view.isEmpty
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.rdpp.dam2_raul_paniti_ejercicio1_bloque1.databinding.ActivityProductListBinding
-import java.lang.NumberFormatException
 
 class ProductList : AppCompatActivity() {
     //Creo una lista de Productos, antes de que se cree la Activity
