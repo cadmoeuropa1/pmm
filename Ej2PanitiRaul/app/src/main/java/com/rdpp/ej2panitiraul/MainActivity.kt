@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -93,6 +94,7 @@ class MainActivity : AppCompatActivity(), EventListener {
 
     override fun call(monument: Monument, position: Int) {
         val phoneNumber = monument.phoneNumber
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) !=
             PackageManager.PERMISSION_GRANTED
         ) {
@@ -100,12 +102,18 @@ class MainActivity : AppCompatActivity(), EventListener {
                 binding.root, getString(R.string.permit_error),
                 Snackbar.LENGTH_LONG
             ).show()
-            //conceder permiso
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    Manifest.permission.CALL_PHONE
-                )
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.CALL_PHONE)
             ) {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle(getString(R.string.builderTitle))
+                builder.setMessage(getString(R.string.builderMessage))
+                builder.setPositiveButton(getString(R.string.builderAccept)) { _, _ ->
+                    ActivityCompat.requestPermissions(this,
+                        arrayOf(Manifest.permission.CALL_PHONE), 123)
+                }
+                builder.setNegativeButton(getString(R.string.builderDeny), null)
+                builder.show()
             } else {
                 ActivityCompat.requestPermissions(
                     this,
@@ -136,8 +144,6 @@ class MainActivity : AppCompatActivity(), EventListener {
         intentEmail.putExtra(Intent.EXTRA_CC, CC);
         intentEmail.putExtra(Intent.EXTRA_SUBJECT, "CONSULT");
         intentEmail.putExtra(Intent.EXTRA_TEXT, getString(R.string.mail_content));
-
         startActivity(Intent.createChooser(intentEmail, "Send Mail"))
     }
-
 }

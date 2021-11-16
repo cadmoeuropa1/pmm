@@ -35,4 +35,8 @@
     <string name="description_5">El castillo de Burgos es una fortaleza situada en la cumbre del cerro del Castillo, elevado 75 m sobre el nivel de la ciudad. La primera torre fue levantada por el conde Diego Porcelos en los tiempos de la Reconquista, en el año 884</string>
     <string name="no_phone_number_error">This monument doesn\'t have a contact number</string>
     <string name="permit_error">Call permit is not conceded</string>
+    <string name="builderTitle">Call Permit</string>
+    <string name="builderMessage">If this permit is not conceded the call function for each Monument won\'t be avalaible</string>
+    <string name="builderDeny">DENY</string>
+    <string name="builderAccept">ACCEPT</string>
 </resources>
