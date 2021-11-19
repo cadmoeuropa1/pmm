@@ -13,13 +13,14 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.rdpp.ej2panitiraul.databinding.ActivityMainBinding
+import java.security.Permissions
 
 class MainActivity : AppCompatActivity(), EventListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var monumentAdapter: MonumentAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
-
+    private lateinit var phoneNumber :Uri
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -86,14 +87,14 @@ class MainActivity : AppCompatActivity(), EventListener {
         return monuments
     }
 
-    override fun onLongClick(monument: Monument, position: Int) {
+    override fun onLongClick(monument: Monument) {
         val intent = Intent(this, MonumentInfo::class.java)
         intent.putExtra("monument", monument)
         startActivity(intent)
     }
 
-    override fun call(monument: Monument, position: Int) {
-        val phoneNumber = monument.phoneNumber
+    override fun call(monument: Monument) {
+        phoneNumber = monument.phoneNumber
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) !=
             PackageManager.PERMISSION_GRANTED
@@ -110,14 +111,14 @@ class MainActivity : AppCompatActivity(), EventListener {
                 builder.setMessage(getString(R.string.builderMessage))
                 builder.setPositiveButton(getString(R.string.builderAccept)) { _, _ ->
                     ActivityCompat.requestPermissions(this,
-                        arrayOf(Manifest.permission.CALL_PHONE), 123)
+                        arrayOf(Manifest.permission.CALL_PHONE), 1)
                 }
                 builder.setNegativeButton(getString(R.string.builderDeny), null)
                 builder.show()
             } else {
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(Manifest.permission.CALL_PHONE), 123
+                    arrayOf(Manifest.permission.CALL_PHONE), 1
                 )
             }
         } else {
@@ -126,24 +127,46 @@ class MainActivity : AppCompatActivity(), EventListener {
                     getString(R.string.no_phone_number_error),
                     Snackbar.LENGTH_SHORT).show()
             } else {
-                val intentCall = Intent(Intent.ACTION_CALL, phoneNumber)
-                startActivity(intentCall)
+              llamada()
             }
         }
     }
 
+    private fun llamada() {
+        val intentCall = Intent(Intent.ACTION_CALL, phoneNumber)
+        startActivity(intentCall)
+    }
+
 
     @SuppressLint("IntentReset")
-    override fun sendMail(monument: Monument, position: Int) {
-        val TO = arrayOf(monument.mail)
-        val CC = arrayOf("")
+    override fun sendMail(monument: Monument) {
+        val tO = arrayOf(monument.mail)
         val intentEmail = Intent(Intent.ACTION_SEND)
-        intentEmail.setData(Uri.parse("mailto:"));
-        intentEmail.setType("text/plain");
-        intentEmail.putExtra(Intent.EXTRA_EMAIL, TO);
-        intentEmail.putExtra(Intent.EXTRA_CC, CC);
-        intentEmail.putExtra(Intent.EXTRA_SUBJECT, "CONSULT");
-        intentEmail.putExtra(Intent.EXTRA_TEXT, getString(R.string.mail_content));
+        intentEmail.setData(Uri.parse("mailto:"))
+        intentEmail.setType("text/plain")
+        intentEmail.putExtra(Intent.EXTRA_EMAIL, tO)
+        intentEmail.putExtra(Intent.EXTRA_SUBJECT, "CONSULT")
         startActivity(Intent.createChooser(intentEmail, "Send Mail"))
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            1 ->
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Snackbar.make(binding.root,
+                        getString(R.string.permission_granted),
+                        Snackbar.LENGTH_SHORT).show()
+                    llamada()
+                }
+            else ->{
+                Snackbar.make(binding.root, "", Snackbar.LENGTH_SHORT).show()
+            }
+        }
     }
 }

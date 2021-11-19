@@ -16,7 +16,7 @@ class MonumentInfo : AppCompatActivity() {
         binding = ActivityMonumentInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var monument = intent.getParcelableExtra<Monument>("monument")
+        val monument = intent.getParcelableExtra<Monument>("monument")
 
         Glide.with(this).load(monument?.image)
             .centerCrop()
@@ -27,5 +27,9 @@ class MonumentInfo : AppCompatActivity() {
         binding.txtMail.text = monument?.mail
         binding.txtDescription.text = monument?.description
         binding.txtName.text = monument?.name
+
+        if(monument?.phoneNumber.toString() == ""){
+            binding.txtPhone.text = getString(R.string.phone_number_info_error)
+        }
     }
 }

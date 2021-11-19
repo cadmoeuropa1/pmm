@@ -3,7 +3,6 @@
     <string name="action_1">LLAMAR</string>
     <string name="action_2">CORREO</string>
     <string name="content_description_media">Monument Image</string>
-    <string name="mail_content" />
     <string name="description_1">La Santa Iglesia Catedral Basílica Metropolitana de Santa María es un templo catedralicio de culto católico dedicado a la Virgen María. Su construcción comenzó en 1221, siguiendo patrones góticos franceses. Fue destruida hasta en 2 ocasiones debido a ataques</string>
     <string name="name_1">Catedral de Burgos</string>
     <string name="location_1">Plaza de Santa María, s/n</string>
@@ -39,4 +38,6 @@
     <string name="builderMessage">If this permit is not conceded the call function for each Monument won\'t be avalaible</string>
     <string name="builderDeny">DENY</string>
     <string name="builderAccept">ACCEPT</string>
+    <string name="permission_granted">Permission granted</string>
+    <string name="phone_number_info_error">Phone number not available</string>
 </resources>

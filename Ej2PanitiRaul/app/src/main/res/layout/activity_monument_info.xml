@@ -6,24 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MonumentInfo">
 
-    <ImageView
-        android:id="@+id/imgMonument"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
         android:text=""
+        android:textSize="25sp"
+        android:textColor="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgMonument" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgMonument"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="25dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtName" />
+
 
     <TextView
         android:id="@+id/txtLocation"
@@ -31,19 +34,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text=""
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtName"
         app:layout_constraintTop_toBottomOf="@id/imgMonument" />
 
     <TextView
         android:id="@+id/txtPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtName" />
+        app:layout_constraintTop_toBottomOf="@id/txtLocation" />
 
     <TextView
         android:id="@+id/txtMail"
@@ -52,16 +55,19 @@
         android:layout_marginTop="20dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/txtPhone"
-        app:layout_constraintTop_toBottomOf="@id/txtLocation" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtPhone" />
 
     <TextView
         android:id="@+id/txtDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
         android:text=""
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgMonument" />
+        app:layout_constraintTop_toBottomOf="@id/txtMail" />
 </androidx.constraintlayout.widget.ConstraintLayout>

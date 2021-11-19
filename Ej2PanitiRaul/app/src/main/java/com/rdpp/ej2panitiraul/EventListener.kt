@@ -1,19 +1,19 @@
 package com.rdpp.ej2panitiraul
 
 interface EventListener {
-    fun onClickListener(monument: Monument, position: Int) {
+    fun onClickListener(monument: Monument) {
 
     }
 
-    fun onLongClick(monument: Monument, position: Int) {
+    fun onLongClick(monument: Monument) {
 
     }
 
-    fun call(monument: Monument, position: Int) {
+    fun call(monument: Monument) {
 
     }
 
-    fun sendMail(monument: Monument, position: Int) {
+    fun sendMail(monument: Monument) {
 
     }
 }

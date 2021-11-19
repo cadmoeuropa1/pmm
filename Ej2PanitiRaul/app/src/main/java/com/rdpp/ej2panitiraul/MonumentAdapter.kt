@@ -24,42 +24,36 @@ class MonumentAdapter(private val monuments: List<Monument>, private val evt: Ev
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val monument = monuments.get(position)
         with(holder) {
-            setListener(monument, (position + 1))
+            setListener(monument)
             binding.txtMonument.text = monument.name
             binding.monumentDirection.text = monument.location
             Glide.with(context).load(monument.image).centerCrop().diskCacheStrategy(
                 DiskCacheStrategy.ALL
             ).into(binding.imgMonument)
-            setLongListener(monument, (position + 1))
-            binding.btnCall.setOnClickListener {
-                evt.call(monument, position)
-            }
-            binding.btnMail.setOnClickListener {
-                evt.sendMail(monument, position)
-            }
-            binding.card.setOnLongClickListener{
-                evt.onLongClick(monument, position)
-                true
-            }
+
         }
     }
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = MonumentCardLayoutBinding.bind(view)
-        fun setListener(monument: Monument, position: Int) {
+        fun setListener(monument: Monument) {
             binding.root.setOnClickListener {
-                evt.onClickListener(monument, position)
+                evt.onClickListener(monument)
             }
-        }
-
-        fun setLongListener(monument: Monument, position: Int) {
-            binding.card.setOnLongClickListener {
-                binding.card.isChecked = !binding.card.isChecked
+            binding.btnCall.setOnClickListener {
+                evt.call(monument)
+            }
+            binding.btnMail.setOnClickListener {
+                evt.sendMail(monument)
+            }
+            binding.card.setOnLongClickListener{
+                evt.onLongClick(monument)
                 true
             }
         }
     }
 
     override fun getItemCount(): Int = monuments.size
+
 }
