@@ -1,6 +1,11 @@
 package com.rdpp.panitiraul
 
-data class Especialidad(var codigoEspecialidad: Int, var nombre: String, var annos: Int){
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Especialidad(var codigoEspecialidad: Int, var nombre: String, var annos: Int) :
+    Parcelable {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

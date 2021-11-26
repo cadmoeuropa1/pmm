@@ -39,5 +39,6 @@ class AdaptadorEspecialidad(
         }
     }
 
+
     override fun getItemCount() = listaEspecialdad.size
 }
