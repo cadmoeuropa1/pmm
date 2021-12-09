@@ -19,7 +19,7 @@ class StoreDAO(context: Context) {
         mBD = structure.writableDatabase
     }
 
-    public fun addStore(store: Store) {
+    fun addStore(store: Store) {
         val values = ContentValues()
         values.put("name", store.name)
         values.put("favorite", store.isFavorite)
@@ -27,7 +27,7 @@ class StoreDAO(context: Context) {
     }
 
     fun getAllStores(): MutableList<Store> {
-        val storeList: MutableList<Store> = ArrayList<Store>()
+        val storeList: MutableList<Store> = ArrayList()
         val cursor: Cursor = mBD.query(TABLE_STORE, null, null, null,
             null, null, null)
         if (cursor.moveToFirst()) {
