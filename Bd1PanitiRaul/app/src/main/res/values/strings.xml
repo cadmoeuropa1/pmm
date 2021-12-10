@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Bd1PanitiRaul</string>
+    <string name="CIF">Viajes RDPP "\n" A09651462</string>
+    <string name="URL">https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/4/2020/09/h_air-way-logo_14_14.png</string>
+    <string name="label">Search for city</string>
 </resources>
