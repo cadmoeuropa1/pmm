@@ -3,4 +3,9 @@
     <string name="CIF">Viajes RDPP "\n" A09651462</string>
     <string name="URL">https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/4/2020/09/h_air-way-logo_14_14.png</string>
     <string name="label">Search for city</string>
+    <string name="content_description_media">Image container</string>
+    <string name="title">title</string>
+    <string name="secondary_text">secondaryText</string>
+    <string name="supporting_text">supportingText</string>
+    <string name="description_image_photo">Apartment image</string>
 </resources>

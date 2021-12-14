@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity(), EventListener {
 
     private fun getAllStores() {
 
-
     }
 
     override fun edit(id: Long) {
