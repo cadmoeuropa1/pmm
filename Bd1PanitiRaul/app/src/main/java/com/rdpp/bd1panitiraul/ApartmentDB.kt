@@ -1,19 +1,22 @@
 package com.rdpp.bd1panitiraul
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 
-class ApartmentDB(context:Context, name:String, factory:SQLiteDatabase.CursorFactory?,
-version:Int): SQLiteOpenHelper(context, name, factory, version) {
+class ApartmentDB(
+    context: Context, name: String, factory: SQLiteDatabase.CursorFactory?,
+    version: Int,
+) : SQLiteOpenHelper(context, name, factory, version) {
     override fun onCreate(p0: SQLiteDatabase?) {
-        try{
+        try {
             val createApartmentTable = "CREATE TABLE apartments (id INTEGER PRIMARY KEY, " +
-                    "name TEXT, city TEXT, price INTEGER, image TEXT, phone INTEGER, mail TEXT, " +
+                    "name TEXT, city TEXT, price INTEGER, image TEXT, phone INTEGER, email TEXT, " +
                     "details TEXT, activities TEXT, favorite INTEGER)"
             p0!!.execSQL(createApartmentTable)
-        }catch (ex: SQLiteException){
+        } catch (ex: SQLiteException) {
             ex.stackTrace
         }
     }

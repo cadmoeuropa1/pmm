@@ -15,13 +15,15 @@ class MainScreen : AppCompatActivity(), EventsListener {
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         db = ApartmentDAO(this)
+        db.insertFirst()
         startRecyclerView()
     }
 
     private fun startRecyclerView() {
         adapterR = ApartmentAdapter(mutableListOf(), this)
         gridLayout = GridLayoutManager(this, 2)
-        getAllStores()
+        getAllApartments()
+
         binding.recyclerview.apply {
             setHasFixedSize(true)
             adapter = adapterR
@@ -29,8 +31,12 @@ class MainScreen : AppCompatActivity(), EventsListener {
         }
     }
 
-    private fun getAllStores() {
-        val tiendas = db.getAllTiendas()
+    private fun getAllApartments() {
+        val apartment = db.getAllApartments()
         adapterR.setApartments(apartment)
+    }
+
+    override fun onFavorite(apartment: Apartment) {
+        TODO("Not yet implemented")
     }
 }

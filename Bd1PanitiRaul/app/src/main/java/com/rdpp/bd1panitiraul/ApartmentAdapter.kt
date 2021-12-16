@@ -1,6 +1,7 @@
 package com.rdpp.bd1panitiraul
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rdpp.bd1panitiraul.databinding.ItemApartmentBinding
 
 class ApartmentAdapter(
-    private val apartments: MutableList<Apartment>,
+    private var apartments: MutableList<Apartment>,
     private val listener: EventsListener,
 ) : RecyclerView.Adapter<ApartmentAdapter.ViewHolder>() {
     private lateinit var context: Context
@@ -17,9 +18,8 @@ class ApartmentAdapter(
         val binding = ItemApartmentBinding.bind(view)
         fun setListener(apartment: Apartment) {
             with(binding.root) {
-                setOnClickListener { listener.edit(apartment.id) }
                 setOnLongClickListener {
-                    listener.deleteStore(apartment.id)
+                    val intent: Intent
                     true
                 }
             }
@@ -44,4 +44,9 @@ class ApartmentAdapter(
     }
 
     override fun getItemCount(): Int = apartments.size
+
+    fun setApartments(apartments: MutableList<Apartment>) {
+        this.apartments = apartments
+        notifyDataSetChanged()
+    }
 }
