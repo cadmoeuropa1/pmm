@@ -10,13 +10,14 @@ class MainScreen : AppCompatActivity(), EventsListener {
     private lateinit var adapterR: ApartmentAdapter
     private lateinit var gridLayout: GridLayoutManager
     private lateinit var db: ApartmentDAO
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         db = ApartmentDAO(this)
         db.insertFirst()
-        startRecyclerView()
+
     }
 
     private fun startRecyclerView() {
