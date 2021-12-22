@@ -44,9 +44,14 @@ class ApartmentDAO(context: Context) {
         }
         return apartmentList
     }
+    fun getSearchedApartment(city: String): MutableList<Apartment>{
+        val apartments: MutableList<Apartment> = ArrayList()
+        val sql = "SELECT * from $TABLE_NAME where city= $city"
+        val cursor: Cursor = myDB.rawQuery(sql, apartments)
+    }
     fun insertFirst(){
         try {
-            val values: ContentValues = ContentValues()
+            val values = ContentValues()
             val id = 1
             val price = 35
             val phone = 947202021
