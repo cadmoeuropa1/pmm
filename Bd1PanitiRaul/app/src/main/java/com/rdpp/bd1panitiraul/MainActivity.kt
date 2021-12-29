@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.imgLogo)
-
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, MainScreen::class.java)
             startActivity(intent)

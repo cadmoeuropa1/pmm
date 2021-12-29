@@ -44,11 +44,10 @@ class ApartmentDAO(context: Context) {
         }
         return apartmentList
     }
-    fun getSearchedApartment(city: String): MutableList<Apartment>{
+    /*fun getSearchedApartment(city: String): MutableList<Apartment>{
         val apartments: MutableList<Apartment> = ArrayList()
         val sql = "SELECT * from $TABLE_NAME where city= $city"
-        val cursor: Cursor = myDB.rawQuery(sql, apartments)
-    }
+    }*/
     fun insertFirst(){
         try {
             val values = ContentValues()
