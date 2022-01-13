@@ -38,6 +38,6 @@ class MainScreen : AppCompatActivity(), EventsListener {
     }
 
     override fun onFavorite(apartment: Apartment) {
-        TODO("Not yet implemented")
+        if()
     }
 }
