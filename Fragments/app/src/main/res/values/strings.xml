@@ -41,4 +41,5 @@
 
     <string name="options_item_call">LLamar</string>
     <string name="options_item_website">Ir al sitio Web</string>
+    <string name="edit">Edit</string>
 </resources>

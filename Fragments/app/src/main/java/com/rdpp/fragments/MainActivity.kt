@@ -1,27 +1,43 @@
-    package com.rdpp.fragments
+package com.rdpp.fragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rdpp.fragments.databinding.ActivityMainBinding
 
-    class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(R.id.containerMain != null) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        if (binding.containerMain != null) {
             val fragment = ConsultFragment()
-            val fragmentManager = supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.add(R.id.containerMain, fragment)
-            fragmentTransaction.commit()
-        }else{
+
+        } else {
             val fragment = EditFragment()
-            val fragmentManager = supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.add(R.id.editContainer, fragment)
-            fragmentTransaction.commit()
+
         }
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
+    fun add() {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        if (binding.containerMain != null) {
+            val fragment = EditFragment()
+            fragmentTransaction.replace(R.id.containerMain, fragment)
+
+        } else {
+            val fragment = EditFragment()
+            fragmentTransaction.replace(R.id.editContainer, fragment)
+
+        }
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }
