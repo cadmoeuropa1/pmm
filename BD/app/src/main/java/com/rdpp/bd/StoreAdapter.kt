@@ -69,7 +69,7 @@ class StoreAdapter(
     }
 
     fun delete(id: Long) {
-        val store = Store(id, "", 0)
+        val store = Store(id, "", "","","")
         val pos = stores.indexOf(store)
         if (pos != -1) {
             stores.removeAt(pos)

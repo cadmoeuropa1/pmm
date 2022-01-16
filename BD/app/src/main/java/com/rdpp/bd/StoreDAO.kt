@@ -25,8 +25,9 @@ class StoreDAO(context: Context) {
         values.put("favorite", store.isFavorite)
         mBD.insert(TABLE_STORE, null, values)
     }
-
+/*
     fun getAllStores(): MutableList<Store> {
+
         val storeList: MutableList<Store> = ArrayList()
         val cursor: Cursor = mBD.query(TABLE_STORE, null, null, null,
             null, null, null)
@@ -42,7 +43,7 @@ class StoreDAO(context: Context) {
         }
         return storeList
     }
-
+*/
     fun updateStore(store: Store) {
         val values = ContentValues()
         values.put("name", store.name)
