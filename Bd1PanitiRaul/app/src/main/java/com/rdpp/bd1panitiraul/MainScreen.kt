@@ -38,6 +38,8 @@ class MainScreen : AppCompatActivity(), EventsListener {
     }
 
     override fun onFavorite(apartment: Apartment) {
-        if()
+        if(apartment.isFavorite == 1){
+
+        }
     }
 }
