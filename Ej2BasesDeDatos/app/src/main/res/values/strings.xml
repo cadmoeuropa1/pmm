@@ -1,5 +1,19 @@
 <resources>
-    <string name="app_name">Ej2BasesDeDatos</string>
+    <string name="app_name">RDPP Law Firm</string>
     <string name="image_URL">https://s03.s3c.es/imag/_v0/770x420/3/e/b/600x400_juicio-mazo-balanza.jpg</string>
     <string name="logo_text">RDPP Law Firm</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="title_activity_main_screen_lawyer">MainScreen_Lawyer</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="firm_name">RDPP Law Firm</string>
+    <string name="login">LOGIN</string>
 </resources>
