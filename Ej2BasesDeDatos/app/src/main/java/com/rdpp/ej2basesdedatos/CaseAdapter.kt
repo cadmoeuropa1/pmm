@@ -40,8 +40,10 @@ class CaseAdapter(
         }
     }
 
-    fun setCases(casesR: MutableList<Case>) {
-        this.cases = casesR
+    fun setCases(casesR: MutableList<Case>?) {
+        if (casesR != null) {
+            this.cases = casesR
+        }
     }
 
     fun update(case: Case) {

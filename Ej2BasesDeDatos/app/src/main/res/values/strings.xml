@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">RDPP Law Firm</string>
-    <string name="image_URL">https://s03.s3c.es/imag/_v0/770x420/3/e/b/600x400_juicio-mazo-balanza.jpg</string>
     <string name="logo_text">RDPP Law Firm</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
@@ -20,4 +19,5 @@
     <string name="case_number">Case number</string>
     <string name="login_error_not_found">User not found, try again</string>
     <string name="login_error_empty_fields">One or more empty fields, try again</string>
+    <string name="image_URL">https://s03.s3c.es/imag/_v0/770x420/3/e/b/600x400_juicio-mazo-balanza.jpg</string>
 </resources>

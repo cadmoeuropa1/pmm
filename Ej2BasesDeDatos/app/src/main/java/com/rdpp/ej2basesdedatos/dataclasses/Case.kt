@@ -7,18 +7,12 @@ data class Case(
     val details: String,
     val lawyer: String
 ) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+    constructor(name: String, date: String, details: String, lawyer: String) : this(
+        0,
+        name,
+        date,
+        details,
+        lawyer
+    )
 
-        other as Case
-
-        if (caseNum != other.caseNum) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        return caseNum
-    }
 }
