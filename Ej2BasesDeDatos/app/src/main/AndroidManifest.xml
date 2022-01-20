@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ej2BasesDeDatos">
         <activity
+            android:name=".MainScreen_Admin"
+            android:exported="false" />
+        <activity
             android:name=".MainScreen_Lawyer"
             android:exported="false" />
         <activity

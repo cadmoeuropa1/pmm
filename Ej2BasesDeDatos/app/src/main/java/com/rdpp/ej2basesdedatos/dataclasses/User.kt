@@ -1,14 +1,17 @@
 package com.rdpp.ej2basesdedatos.dataclasses
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class User(
     val reg_Num: String,
     val name: String,
     val login: String,
     val password: String,
-    val type: String
-) {
-    constructor(login: String?, password: String?) : this("","","","","")
-
+    val type: String,
+) : Parcelable {
+    constructor(login: String?, password: String?) : this("", "", "", "", "")
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -16,12 +19,16 @@ data class User(
 
         other as User
 
-        if (reg_Num != other.reg_Num) return false
+        if (login != other.login) return false
+        if (password != other.password) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        return reg_Num.hashCode()
+        var result = login.hashCode()
+        result = 31 * result + password.hashCode()
+        return result
     }
+
 }

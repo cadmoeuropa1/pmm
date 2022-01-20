@@ -18,4 +18,6 @@
     <string name="login">LOGIN</string>
     <string name="case_name">Case name</string>
     <string name="case_number">Case number</string>
+    <string name="login_error_not_found">User not found, try again</string>
+    <string name="login_error_empty_fields">One or more empty fields, try again</string>
 </resources>

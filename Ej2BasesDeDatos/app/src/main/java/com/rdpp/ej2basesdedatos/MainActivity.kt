@@ -1,5 +1,6 @@
 package com.rdpp.ej2basesdedatos
 
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,58 +12,60 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import com.rdpp.ej2basesdedatos.database.LawFirmDAO
 import com.rdpp.ej2basesdedatos.databinding.ActivityMainBinding
+import com.rdpp.ej2basesdedatos.dataclasses.Case
 import com.rdpp.ej2basesdedatos.dataclasses.User
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var database : LawFirmDAO
-    private lateinit var users : MutableList<User>
+    private lateinit var database: LawFirmDAO
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        database = LawFirmDAO(this)
         setContentView(binding.root)
         binding.frameLogin.visibility = View.INVISIBLE
 
-        LoadScreen().execute()
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.frameImage.visibility = View.INVISIBLE
+            binding.txtName.visibility = View.INVISIBLE
+            binding.frameLogin.visibility = View.VISIBLE
+        }, 3000)
 
         binding.btnLogin.setOnClickListener {
             validateUser()
         }
 
-        database = LawFirmDAO(this)
-        users = getUsers()
     }
 
     private fun validateUser() {
-        var login:String = binding.textUser.text.toString()
-        var password:String  = binding.textPassword.text.toString()
-        if (login.equals(users.get())){
-            Snackbar.make(binding.root, "Empty fields", Snackbar.LENGTH_SHORT).show()
+        val login: String = binding.textUser.text.toString()
+        val password: String = binding.textPassword.text.toString()
+        if (login == "" || password == "") {
+            Snackbar.make(
+                binding.root,
+                getString(R.string.login_error_empty_fields),
+                Snackbar.LENGTH_SHORT
+            ).show()
+        } else {
+            val user = database.getUser(login, password)
+            if (user != null) {
+                if (user.type == "L") {
+                    Snackbar.make(binding.root, "User logged", Snackbar.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainScreen_Lawyer::class.java)
+                    intent.putExtra("user", user)
+                    startActivity(intent)
+                } else if (user.type == "S") {
+                    Snackbar.make(binding.root, "User logged", Snackbar.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainScreen_Admin::class.java)
+                    intent.putExtra("user", user)
+                    startActivity(intent)
+                }
+            } else {
+                Snackbar.make(binding.root, (R.string.login_error_not_found), Snackbar.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
-
-    private fun getUsers(): MutableList<User>{
-        return database.getAllUsers()
-    }
-
-    private inner class LoadScreen() : AsyncTask<Void, Void, Void>() {
-         override fun doInBackground(vararg p0: Void?): Void? {
-             Glide.with(binding.root).load(getString(R.string.image_URL))
-                 .centerCrop()
-                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                 .into(binding.imgLogo)
-            Thread.sleep(3000)
-             return null
-         }
-
-         override fun onPostExecute(result: Void?) {
-             super.onPostExecute(result)
-             binding.frameImage.visibility = View.INVISIBLE
-             binding.frameLogin.visibility = View.VISIBLE
-         }
-
-     }
-
-
 }

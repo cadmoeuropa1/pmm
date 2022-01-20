@@ -21,7 +21,7 @@ open class LawFirmDAO(context: Context) {
         mDB = structure.writableDatabase
     }
 
-    fun getAllUsers() : MutableList<User> {
+    fun getAllLogins(): MutableList<User> {
         val list: MutableList<User> = ArrayList()
         val cursor: Cursor = mDB.query(TABLE_USERS, null, null, null, null, null, null)
         if (cursor.moveToFirst()) {
@@ -35,5 +35,21 @@ open class LawFirmDAO(context: Context) {
             } while (cursor.moveToNext())
         }
         return list
+    }
+
+    fun getUser(login: String, password: String): User? {
+        var user: User? = null
+        val sql = "SELECT * from $TABLE_USERS WHERE login='$login' AND password='$password'"
+        val cursor: Cursor = mDB.rawQuery(sql, null)
+        if(cursor.moveToFirst()) {
+            user = User(
+                cursor.getString(cursor.getColumnIndexOrThrow("reg_Num")),
+                cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                cursor.getString(cursor.getColumnIndexOrThrow("login")),
+                cursor.getString(cursor.getColumnIndexOrThrow("password")),
+                cursor.getString(cursor.getColumnIndexOrThrow("type"))
+            )
+        }
+        return user
     }
 }
