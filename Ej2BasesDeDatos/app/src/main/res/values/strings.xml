@@ -20,4 +20,8 @@
     <string name="login_error_not_found">User not found, try again</string>
     <string name="login_error_empty_fields">One or more empty fields, try again</string>
     <string name="image_URL">https://s03.s3c.es/imag/_v0/770x420/3/e/b/600x400_juicio-mazo-balanza.jpg</string>
+    <string name="add_new_cases_to_the_database">Add new cases to the database</string>
+    <string name="case_details">Case details</string>
+    <string name="case_name_add">Case name</string>
+    <string name="add_new_case">ADD NEW CASE</string>
 </resources>

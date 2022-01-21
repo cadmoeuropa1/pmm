@@ -12,13 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ej2BasesDeDatos">
         <activity
+            android:name=".view.AddCaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.MainScreen"
+            android:exported="false" />
+        <activity
             android:name=".MainScreen_Admin"
             android:exported="false" />
         <activity
             android:name=".MainScreen_Lawyer"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

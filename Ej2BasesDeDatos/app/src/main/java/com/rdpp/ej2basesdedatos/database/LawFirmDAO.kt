@@ -25,7 +25,7 @@ open class LawFirmDAO(context: Context) {
 
     fun addUser(user: User) {
         val values = ContentValues()
-        values.put("num_Reg", user.reg_Num)
+        values.put("reg_Num", user.reg_Num)
         values.put("name", user.name)
         values.put("login", user.login)
         values.put("password", user.password)
@@ -71,12 +71,13 @@ open class LawFirmDAO(context: Context) {
     }
 
     fun getAllCases(): MutableList<Case> {
-        val lista: MutableList<Case> = ArrayList()
+        val list: MutableList<Case> = ArrayList()
         val cursor: Cursor = mDB.query(TABLE_CASES, null, null, null, null, null, null)
         if (cursor.moveToFirst()) {
             do {
-                lista.add(
+                list.add(
                     Case(
+                        cursor.getInt(cursor.getColumnIndexOrThrow("caseNum")),
                         cursor.getString(cursor.getColumnIndexOrThrow("name")),
                         cursor.getString(cursor.getColumnIndexOrThrow("date")),
                         cursor.getString(cursor.getColumnIndexOrThrow("details")),
@@ -87,7 +88,29 @@ open class LawFirmDAO(context: Context) {
             if (!cursor.isClosed)
                 cursor.close()
         }
-        return lista
+        return list
+    }
+
+    fun getLawyerCases(regNum: String): MutableList<Case> {
+        val list: MutableList<Case> = ArrayList()
+        val sql = "SELECT * FROM cases WHERE lawyer ='$regNum'"
+        val cursor: Cursor = mDB.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(
+                    Case(
+                        cursor.getInt(cursor.getColumnIndexOrThrow("caseNum")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("date")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("details")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("lawyer"))
+                    )
+                )
+            } while (cursor.moveToNext())
+            if (!cursor.isClosed)
+                cursor.close()
+        }
+        return list
     }
 
 }

@@ -1,5 +1,6 @@
 package com.rdpp.ej2basesdedatos
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -31,8 +32,9 @@ class CaseAdapter(
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val case = cases.get(position)
+        val case = cases[position]
         with(holder) {
             setListener(case)
             binding.caseName.text = case.name
