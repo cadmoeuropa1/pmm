@@ -1,7 +1,9 @@
 package com.rdpp.ej2basesdedatos.interfaces
 
 import com.rdpp.ej2basesdedatos.dataclasses.Case
+import com.rdpp.ej2basesdedatos.dataclasses.Procedure
 
-interface EventListener {
+interface CaseEventListener {
     fun showDetails(case: Case)
+
 }

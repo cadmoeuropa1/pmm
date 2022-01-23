@@ -1,19 +1,21 @@
 package com.rdpp.ej2basesdedatos.view
 
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.GridLayoutManager
-import com.rdpp.ej2basesdedatos.CaseAdapter
+import com.rdpp.ej2basesdedatos.adapters.CaseAdapter
 import com.rdpp.ej2basesdedatos.database.LawFirmDAO
 import com.rdpp.ej2basesdedatos.databinding.ActivityMainScreenBinding
 import com.rdpp.ej2basesdedatos.dataclasses.Case
+import com.rdpp.ej2basesdedatos.dataclasses.Procedure
 import com.rdpp.ej2basesdedatos.dataclasses.User
-import com.rdpp.ej2basesdedatos.interfaces.EventListener
+import com.rdpp.ej2basesdedatos.interfaces.CaseEventListener
 
-class MainScreen : AppCompatActivity(), EventListener {
+class MainScreen : AppCompatActivity(), CaseEventListener {
 
     private lateinit var binding: ActivityMainScreenBinding
     private lateinit var adapterR: CaseAdapter
@@ -77,8 +79,12 @@ class MainScreen : AppCompatActivity(), EventListener {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder.setTitle("Case " + case.caseNum + " (" + case.name + ")")
         builder.setMessage("Case: ${case.caseNum} \nName: ${case.name} \nDate: ${case.date} \nDetails: ${case.details} \nLawyer (Registration Number): ${case.lawyer} ")
-        builder.setPositiveButton("Aceptar", null)
-
+        builder.setPositiveButton("DISMISS", null)
+        builder.setNegativeButton("PROCEDURES", DialogInterface.OnClickListener { _, _ ->
+            val intent = Intent(this, CaseProceduresActivity::class.java)
+            intent.putExtra("case", case)
+            startActivity(intent)
+        })
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }

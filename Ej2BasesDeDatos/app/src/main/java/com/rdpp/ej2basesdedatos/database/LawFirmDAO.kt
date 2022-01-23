@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.rdpp.ej2basesdedatos.dataclasses.Case
+import com.rdpp.ej2basesdedatos.dataclasses.Procedure
 import com.rdpp.ej2basesdedatos.dataclasses.User
 
 open class LawFirmDAO(context: Context) {
@@ -31,16 +32,17 @@ open class LawFirmDAO(context: Context) {
         values.put("password", user.password)
         values.put("type", user.type)
         mDB.insert(TABLE_USERS, null, values)
-
     }
 
-    fun addCase(case: Case) {
+    fun addCase(case: Case): Long {
+        val result: Long
         val values = ContentValues()
         values.put("name", case.name)
         values.put("date", case.date)
         values.put("details", case.details)
         values.put("lawyer", case.lawyer)
-        mDB.insert(TABLE_CASES, null, values)
+        result = mDB.insert(TABLE_CASES, null, values)
+        return result
     }
 
 
@@ -60,15 +62,6 @@ open class LawFirmDAO(context: Context) {
         return user
     }
 
-    fun getTables(): Boolean {
-        var sem = false
-        val cursor: Cursor =
-            mDB.rawQuery("SELECT * FROM $TABLE_USERS, $TABLE_USERS, $TABLE_USERS", null)
-        if (cursor.moveToNext()) {
-            sem = true
-        }
-        return sem
-    }
 
     fun getAllCases(): MutableList<Case> {
         val list: MutableList<Case> = ArrayList()
@@ -113,4 +106,48 @@ open class LawFirmDAO(context: Context) {
         return list
     }
 
+    fun checkUser(regNum: String): Boolean {
+        val sql = "SELECT * FROM $TABLE_USERS WHERE reg_Num = '$regNum'"
+        val cursor: Cursor = mDB.rawQuery(sql, null)
+        return cursor.moveToFirst()
+    }
+
+    fun getCaseProcedures(caseNum: Int?): MutableList<Procedure> {
+        val list: MutableList<Procedure> = ArrayList()
+        val sql = "select * from $TABLE_PROCEDURES where caseNum = '$caseNum'"
+        val cursor: Cursor = mDB.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(
+                    Procedure(
+                        cursor.getInt(cursor.getColumnIndexOrThrow("procedureNum")),
+                        cursor.getInt(cursor.getColumnIndexOrThrow("caseNum")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("date")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("details")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("executed"))
+                    )
+                )
+            } while (cursor.moveToNext())
+            if (!cursor.isClosed)
+                cursor.close()
+        }
+        return list
+    }
+
+    fun updateProcedure(procedure: Procedure) {
+        val sql =
+            "UPDATE $TABLE_PROCEDURES SET executed = 'YES' WHERE procedureNum = ${procedure.procedureNum}"
+        mDB.execSQL(sql)
+    }
+
+    fun addProcedure(procedure: Procedure): Long {
+        val result: Long
+        val values = ContentValues()
+        values.put("caseNum", procedure.caseNum)
+        values.put("date", procedure.date)
+        values.put("details", procedure.details)
+        values.put("executed", procedure.executed)
+        result = mDB.insert(TABLE_USERS, null, values)
+        return result
+    }
 }

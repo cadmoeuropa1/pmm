@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ej2BasesDeDatos">
         <activity
+            android:name=".view.AddProcedureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.CaseProceduresActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.AddCaseActivity"
             android:exported="false" />
         <activity

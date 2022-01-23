@@ -3,26 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainScreen">
+    tools:context=".view.CaseProceduresActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerProcedures"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_case">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/item_procedure" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fobAddCase"
+        android:id="@+id/fabAddProcedure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="55dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_add">
-
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_add" />
 
 </FrameLayout>

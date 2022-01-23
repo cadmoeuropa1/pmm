@@ -44,12 +44,13 @@
             android:hint="@string/case_details"
             android:inputType="text" />
 
-        <Spinner
-            android:id="@+id/spnLawyers"
-            android:layout_width="fill_parent"
+        <EditText
+            android:id="@+id/txtLawyer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
-        </Spinner>
+            android:layout_margin="15dp"
+            android:hint="@string/lawyer_in_charge"
+            android:inputType="text" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddNew"

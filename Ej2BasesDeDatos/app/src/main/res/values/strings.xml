@@ -24,4 +24,19 @@
     <string name="case_details">Case details</string>
     <string name="case_name_add">Case name</string>
     <string name="add_new_case">ADD NEW CASE</string>
+    <string name="lawyer_in_charge">Lawyer in Charge</string>
+    <string name="case_added_correct">Case added successfully.</string>
+    <string name="case_added_error">Case couldn\'t be added, try again</string>
+    <string name="reg_Num_not_found">Lawyer registration number not found, try again</string>
+    <string name="procedure">Procedure: </string>
+    <string name="add_new_procedure">Add new procedure</string>
+    <string name="procedure_details">Procedure details</string>
+    <string name="executed_yes_or_no">Executed? (YES or NO)</string>
+    <string name="save_procedure">Save procedure</string>
+    <string name="date">Date :</string>
+    <string name="details">Details :</string>
+    <string name="executed">Executed :</string>
+    <string name="add_a_new_procedure">ADD A NEW PROCEDURE</string>
+    <string name="error_procedure_add_executed">You must enter \'YES\' or \'NO\'in the \'Executed\' field</string>
+    <string name="error_procedure_not_saved">The adding of the procedure couldn\'t be done, try again</string>
 </resources>
