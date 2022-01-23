@@ -147,7 +147,7 @@ open class LawFirmDAO(context: Context) {
         values.put("date", procedure.date)
         values.put("details", procedure.details)
         values.put("executed", procedure.executed)
-        result = mDB.insert(TABLE_USERS, null, values)
+        result = mDB.insert(TABLE_PROCEDURES, null, values)
         return result
     }
 }

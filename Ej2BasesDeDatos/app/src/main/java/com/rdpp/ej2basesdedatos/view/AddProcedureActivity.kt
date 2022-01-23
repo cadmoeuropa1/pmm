@@ -24,7 +24,7 @@ class AddProcedureActivity : AppCompatActivity() {
         binding.inputDate.text = getCurrentDateTime().toString("DD/MM/YYYY")
 
 
-        setRecyclerView()
+
         binding.btnAddNew.setOnClickListener {
             val procedure = Procedure(
                 case.caseNum!!,
@@ -36,21 +36,13 @@ class AddProcedureActivity : AppCompatActivity() {
         }
     }
 
-    private fun setRecyclerView() {
-        TODO("Not yet implemented")
-    }
-
-    private fun updateRecycler() {
-
-    }
-
     private fun validateAndAddProcedure(procedure: Procedure) {
         val result: Long
-        if (procedure.executed != "YES" || procedure.executed != "NO"){
+        if (procedure.executed != "YES" && procedure.executed != "NO"){
             Snackbar.make(binding.root, getString(R.string.error_procedure_add_executed), Snackbar.LENGTH_SHORT).show()
         }else{
             result = database.addProcedure(procedure)
-            if (result != -1L){
+            if (result == -1L){
                 Snackbar.make(binding.root, getString(R.string.error_procedure_not_saved), Snackbar.LENGTH_SHORT).show()
             }
         }
