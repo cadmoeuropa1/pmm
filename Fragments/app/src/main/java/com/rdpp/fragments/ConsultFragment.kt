@@ -33,6 +33,7 @@ class ConsultFragment : Fragment() {
         }
 
     }
+    private fun consultaCorrutinas(){}
 
 
 }
