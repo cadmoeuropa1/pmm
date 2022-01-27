@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83fde4f1-a305-4a06-a015-8c7573fd3137" name="Default Changelist" comment="" />
+    <list default="true" id="83fde4f1-a305-4a06-a015-8c7573fd3137" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Bd3PanitiRaul/.idea/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,5 +46,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

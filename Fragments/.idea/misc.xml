@@ -5,10 +5,10 @@
       <map>
         <entry key="..\:/pmm/Fragments/app/src/main/res/layout-xlarge/activity_main.xml" value="0.18" />
         <entry key="..\:/pmm/Fragments/app/src/main/res/layout/activity_main.xml" value="0.19427083333333334" />
-        <entry key="..\:/pmm/Fragments/app/src/main/res/layout/fragment_consult_store.xml" value="0.1" />
-        <entry key="..\:/pmm/Fragments/app/src/main/res/layout/fragment_edit_store.xml" value="0.22" />
+        <entry key="..\:/pmm/Fragments/app/src/main/res/layout/fragment_consult_store.xml" value="0.25" />
+        <entry key="..\:/pmm/Fragments/app/src/main/res/layout/fragment_edit_store.xml" value="0.25" />
         <entry key="..\:/pmm/Fragments/app/src/main/res/layout/item_store.xml" value="0.25" />
-        <entry key="..\:/pmm/Fragments/app/src/main/res/menu/options_menu.xml" value="0.19427083333333334" />
+        <entry key="..\:/pmm/Fragments/app/src/main/res/menu/options_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

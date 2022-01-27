@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Bd3PanitiRaul</string>
+    <string name="products">Products</string>
+    <string name="categories">Categories</string>
+    <string name="shopping_lists">Shopping lists</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="select_a_category_of_products">Select a category of products:</string>
+    <string name="add_new_category">Add new category</string>
+    <string name="delete_category">Delete category</string>
+</resources>
