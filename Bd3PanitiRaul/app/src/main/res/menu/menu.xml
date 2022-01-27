@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/btn_products"
-        android:icon="@drawable/ic_products"
-        android:title="@string/products" />
-
-    <item
         android:id="@+id/btn_categories"
         android:icon="@drawable/ic_categories"
         android:title="@string/categories" />
+
+    <item
+        android:id="@+id/btn_products"
+        android:icon="@drawable/ic_products"
+        android:title="@string/products" />
 
     <item
         android:id="@+id/btn_shopping_lists"

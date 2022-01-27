@@ -13,15 +13,15 @@ class ShoppingListDB(
         try {
             val createProductsTable =
                 "CREATE TABLE ${ShoppingListDAO.TABLE_PRODUCTS} (prod_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "name TEXT, cat_Id INTEGER, image TEXT)"
+                        "name TEXT UNIQUE, cat_Id INTEGER, image TEXT)"
 
             val createCategoriesTable =
                 "CREATE TABLE ${ShoppingListDAO.TABLE_CATEGORIES} (cat_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "name TEXT)"
+                        "name TEXT UNIQUE)"
 
             val createListsTable =
                 "CREATE TABLE ${ShoppingListDAO.TABLE_LISTS} (list_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "name TEXT)"
+                        "name TEXT UNIQUE)"
 
             val createListsProductsTable =
                 "CREATE TABLE ${ShoppingListDAO.TABLE_LISTS_PRODUCTS} (code INTEGER PRIMARY KEY AUTOINCREMENT, " +

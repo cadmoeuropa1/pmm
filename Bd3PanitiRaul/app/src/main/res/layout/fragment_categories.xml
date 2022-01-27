@@ -14,7 +14,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,11 +21,13 @@
             android:text="@string/select_a_category_of_products" />
 
         <Spinner
+            android:id="@+id/spnCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp" />
@@ -37,22 +38,22 @@
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp"
                 android:text="@string/add_new_category"
-                app:icon="@drawable/ic_add"
-                />
+                app:icon="@drawable/ic_add" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp"
                 android:text="@string/delete_category"
-                app:icon="@drawable/ic_delete"
-                />
+                app:icon="@drawable/ic_delete" />
 
         </LinearLayout>
 
