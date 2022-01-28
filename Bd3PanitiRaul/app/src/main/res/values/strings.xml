@@ -16,4 +16,10 @@
     <string name="alert_dialog_create_category_title">Create new category</string>
     <string name="alert_dialog_create_category_message">Introduce the name of the Category</string>
     <string name="edit_text_add_category_hint">Category name</string>
+    <string name="product_list">PRODUCT LIST</string>
+    <string name="delete_product">DELETE PRODUCT</string>
+    <string name="product_image">Product image</string>
+    <string name="add_new_product">ADD NEW PRODUCT</string>
+    <string name="order_by_categories">Order by categories</string>
+    <string name="order_alphabetically">Order alphabetically</string>
 </resources>

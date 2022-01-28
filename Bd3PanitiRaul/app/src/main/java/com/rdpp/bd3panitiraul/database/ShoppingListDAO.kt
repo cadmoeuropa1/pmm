@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.rdpp.bd3panitiraul.dataclass.Category
+import com.rdpp.bd3panitiraul.dataclass.Product
 
 open class ShoppingListDAO(context: Context) {
 
@@ -28,7 +29,7 @@ open class ShoppingListDAO(context: Context) {
 
     fun getAllCategories(): MutableList<Category> {
         val categories: MutableList<Category> = ArrayList()
-        val sql = "SELECT * FROM ${ShoppingListDAO.TABLE_CATEGORIES}"
+        val sql = "SELECT * FROM $TABLE_CATEGORIES"
         val cursor: Cursor = mDB.rawQuery(sql, null)
         if (cursor.moveToFirst()) {
             do {
@@ -45,6 +46,28 @@ open class ShoppingListDAO(context: Context) {
             cursor.close()
         }
         return categories
+    }
+
+    fun getAllProducts(): MutableList<Product> {
+        val productList = ArrayList<Product>()
+        val sql = "SELECT * FROM $TABLE_PRODUCTS"
+        val cursor: Cursor = mDB.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                productList.add(
+                    Product
+                        (
+                        cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                        cursor.getInt(cursor.getColumnIndexOrThrow("cat_Id")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("image"))
+                    )
+                )
+            } while (cursor.moveToNext())
+        }
+        if (cursor.isClosed) {
+            cursor.close()
+        }
+        return productList
     }
 
     fun CategoriesData(): Boolean {
@@ -77,5 +100,6 @@ open class ShoppingListDAO(context: Context) {
 
         return mDB.delete(TABLE_CATEGORIES, "name='$cat'", null)
     }
+
 
 }
