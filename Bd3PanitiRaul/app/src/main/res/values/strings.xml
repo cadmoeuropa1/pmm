@@ -22,4 +22,11 @@
     <string name="add_new_product">ADD NEW PRODUCT</string>
     <string name="order_by_categories">Order by categories</string>
     <string name="order_alphabetically">Order alphabetically</string>
+    <string name="button_alphabetically">alphabetically</string>
+    <string name="button_categories">Categories</string>
+    <string name="product_image_add">Product image</string>
+    <string name="product_name_add">Product name</string>
+    <string name="alert_dialog_add_product">Add Product</string>
+    <string name="product_add_error">Error adding the product, please try again</string>
+    <string name="product_added_correct">Product added correctly.</string>
 </resources>

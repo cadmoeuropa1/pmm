@@ -17,6 +17,7 @@
 
             <!-- Media -->
             <ImageView
+                android:id="@+id/imgProduct"
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:contentDescription="@string/product_image"

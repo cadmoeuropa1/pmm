@@ -38,7 +38,16 @@ class CategoriesFragment : Fragment() {
             addCategory()
         }
         mBinding.btnDelete.setOnClickListener {
-            deleteCategory()
+            val builder = MaterialAlertDialogBuilder(requireContext())
+            with(builder) {
+                setTitle("Delete category")
+                setMessage("¿Are you sure you want to delete this category?")
+                setPositiveButton("Delete") { _, _ ->
+                    deleteCategory()
+                }
+                setNegativeButton("Cancel", null)
+                show()
+            }
         }
     }
 
@@ -62,7 +71,7 @@ class CategoriesFragment : Fragment() {
 
         mBinding.spnCategories.adapter = lstCategories
 
-        if (database.CategoriesData()) {
+        if (database.categoriesData()) {
             for (i in 0 until mCategories!!.size) {
                 val cat = mCategories!![i]
                 lstCategories.add(cat.toString())

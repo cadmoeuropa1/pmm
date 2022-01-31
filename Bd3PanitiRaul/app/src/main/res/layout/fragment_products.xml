@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,35 +20,50 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
-        <ToggleButton
-            android:id="@+id/tglOrder"
-            android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="15dp"
-            android:textOff="@string/order_by_categories"
-            android:textOn="@string/order_alphabetically" />
+            app:singleSelection="true">
 
-        <ScrollView
+            <Button
+                android:id="@+id/btnAlphabet"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_categories" />
+
+            <Button
+                android:id="@+id/btnCategories"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_alphabetically" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="400dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 tools:listitem="@layout/product_card_layout" />
-        </ScrollView>
+        </FrameLayout>
 
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="@string/add_new_product" />
 
     </LinearLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="15dp"
+        android:text="@string/add_new_product" />
 
 </FrameLayout>
