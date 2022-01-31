@@ -86,7 +86,6 @@ class CategoriesFragment : Fragment() {
         val input = EditText(requireContext())
         with(input) {
             hint = context.getString(R.string.edit_text_add_category_hint)
-            maxLines = 0
         }
         with(builder) {
             setTitle(getString(R.string.alert_dialog_create_category_title))

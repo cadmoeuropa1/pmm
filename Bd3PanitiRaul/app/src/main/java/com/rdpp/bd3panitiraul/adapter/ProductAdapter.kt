@@ -33,7 +33,7 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val product = products[position]
+        val product = this.products[position]
         with(holder) {
             setListener(product)
             binding.txtProdName.text = product.name
@@ -41,6 +41,7 @@ class ProductAdapter(
                 DiskCacheStrategy.ALL
             ).into(binding.imgProduct)
         }
+
     }
 
     override fun getItemCount(): Int = products.size

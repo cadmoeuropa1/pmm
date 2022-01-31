@@ -41,7 +41,7 @@ class ProductsFragment : Fragment(), EventListener {
         layout = GridLayoutManager(requireContext(), 2)
         val productGeneral = database.getAllProducts()
         adapter.setProducts(productGeneral)
-
+        mBinding.recyclerView.adapter = adapter
         mBinding.toggleButton.addOnButtonCheckedListener { toggleButton, _, _ ->
             when (toggleButton.checkedButtonId) {
                 R.id.btnCategories -> {
