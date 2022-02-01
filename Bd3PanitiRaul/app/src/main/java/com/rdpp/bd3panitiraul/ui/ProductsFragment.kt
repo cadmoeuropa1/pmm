@@ -15,9 +15,9 @@ import com.rdpp.bd3panitiraul.database.ShoppingListDAO
 import com.rdpp.bd3panitiraul.databinding.FragmentProductsBinding
 import com.rdpp.bd3panitiraul.dataclass.Category
 import com.rdpp.bd3panitiraul.dataclass.Product
-import com.rdpp.bd3panitiraul.listener.EventListener
+import com.rdpp.bd3panitiraul.listener.ProductEventListener
 
-class ProductsFragment : Fragment(), EventListener {
+class ProductsFragment : Fragment(), ProductEventListener {
     private lateinit var mBinding: FragmentProductsBinding
     private var mActivity: MainActivity? = null
     private lateinit var database: ShoppingListDAO
@@ -41,7 +41,11 @@ class ProductsFragment : Fragment(), EventListener {
         layout = GridLayoutManager(requireContext(), 2)
         val productGeneral = database.getAllProducts()
         adapter.setProducts(productGeneral)
-        mBinding.recyclerView.adapter = adapter
+        mBinding.recyclerView.apply {
+            setHasFixedSize(true)
+            adapter = this.adapter
+            layoutManager = layout
+        }
         mBinding.toggleButton.addOnButtonCheckedListener { toggleButton, _, _ ->
             when (toggleButton.checkedButtonId) {
                 R.id.btnCategories -> {

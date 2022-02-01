@@ -10,11 +10,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.rdpp.bd3panitiraul.R
 import com.rdpp.bd3panitiraul.databinding.ProductCardLayoutBinding
 import com.rdpp.bd3panitiraul.dataclass.Product
-import com.rdpp.bd3panitiraul.listener.EventListener
+import com.rdpp.bd3panitiraul.listener.ProductEventListener
 
 class ProductAdapter(
-    private var products: MutableList<Product>, private var listener: EventListener,
-) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+    private var products: MutableList<Product>, private var listener: ProductEventListener) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
     private lateinit var context: Context
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

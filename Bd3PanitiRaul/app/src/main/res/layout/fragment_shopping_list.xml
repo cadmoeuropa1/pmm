@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.ShoppingListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:text="SHOPPING LISTS" />
+        android:layout_margin="15dp"
+        tools:listitem="@layout/shopping_list_card_layout">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_Add_List"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="42dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="42dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_shopping_list_add"
-        app:maxImageSize="34dp"
-        app:fabCustomSize="63dp">
+        app:fabCustomSize="63dp"
+        app:maxImageSize="34dp">
 
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>

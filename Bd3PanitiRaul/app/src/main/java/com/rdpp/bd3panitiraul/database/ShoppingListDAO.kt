@@ -160,8 +160,7 @@ open class ShoppingListDAO(context: Context) {
 
     fun selectedCat(selectedItemId: Long): Category? {
         var cat: Category? = null
-        val catId = selectedItemId.toInt()
-        val sql = "SELECT * from $TABLE_CATEGORIES WHERE cat_Id='$catId'"
+        val sql = "SELECT * from $TABLE_CATEGORIES WHERE cat_Id='$selectedItemId'"
         val cursor = mDB.rawQuery(sql, null)
         if (cursor.moveToFirst()) {
             cat = Category(
