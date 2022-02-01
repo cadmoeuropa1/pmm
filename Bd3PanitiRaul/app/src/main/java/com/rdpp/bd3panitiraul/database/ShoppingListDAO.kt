@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.rdpp.bd3panitiraul.dataclass.Category
 import com.rdpp.bd3panitiraul.dataclass.Product
+import com.rdpp.bd3panitiraul.dataclass.ShoppingList
 
 open class ShoppingListDAO(context: Context) {
 
@@ -71,15 +72,10 @@ open class ShoppingListDAO(context: Context) {
     }
 
     fun categoriesData(): Boolean {
-
         var semaforo = false
-
         val cursor: Cursor = mDB.rawQuery("SELECT * FROM $TABLE_CATEGORIES", null)
-
         if (cursor.moveToNext()) {
-
             semaforo = true
-
         }
         cursor.close()
         return semaforo
@@ -100,7 +96,7 @@ open class ShoppingListDAO(context: Context) {
 
     fun getProductsByCategories(): MutableList<Product> {
         val list = ArrayList<Product>()
-        val sql = "SELECT * FROM $TABLE_PRODUCTS GROUP BY cat_Id"
+        val sql = "SELECT * FROM $TABLE_PRODUCTS ORDER BY cat_Id"
         val cursor = mDB.rawQuery(sql, null)
         if (cursor.moveToFirst()) {
             do {
@@ -143,32 +139,64 @@ open class ShoppingListDAO(context: Context) {
     }
 
     fun addProduct(prodName: String, cat: Category, prodImage: String): Long {
-        val result: Long
         val values = ContentValues()
         values.put("name", prodName)
         values.put("cat_Id", cat.cat_Id)
         values.put("image", prodImage)
-        result = mDB.insert(TABLE_PRODUCTS, null, values)
 
-        return result
-
+        return mDB.insert(TABLE_PRODUCTS, null, values)
     }
 
     fun deleteProduct(product: String): Int {
         return mDB.delete(TABLE_PRODUCTS, "name='$product'", null)
     }
 
-    fun selectedCat(selectedItemId: Long): Category? {
-        var cat: Category? = null
-        val sql = "SELECT * from $TABLE_CATEGORIES WHERE cat_Id='$selectedItemId'"
-        val cursor = mDB.rawQuery(sql, null)
+    fun getProductCategory(catId: Int): String {
+        var result = ""
+        val cursor = mDB.rawQuery("SELECT name FROM $TABLE_CATEGORIES WHERE cat_Id='$catId'", null)
         if (cursor.moveToFirst()) {
-            cat = Category(
-                cursor.getInt(cursor.getColumnIndexOrThrow("cat_Id")),
-                cursor.getString(cursor.getColumnIndexOrThrow("name"))
-            )
+            result = cursor.getString(cursor.getColumnIndexOrThrow("name"))
         }
-        return cat
+        return result
     }
 
+    fun addProductToList(product: Product, shoppingList: ShoppingList) {
+        TODO("Not yet implemented")
+    }
+
+    fun getAllLists(): MutableList<ShoppingList> {
+        val shoppingLists = ArrayList<ShoppingList>()
+        val sql = "SELECT * FROM $TABLE_LISTS"
+        val cursor: Cursor = mDB.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                shoppingLists.add(
+                    ShoppingList(
+                        cursor.getInt(cursor.getColumnIndexOrThrow("list_Id")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("name"))
+                    )
+                )
+            } while (cursor.moveToNext())
+        }
+        if (cursor.isClosed) {
+            cursor.close()
+        }
+        return shoppingLists
+    }
+
+    fun addList(listName: String): Long {
+        val contentValues = ContentValues()
+        contentValues.put("name", listName)
+        return mDB.insert(TABLE_LISTS, null, contentValues)
+    }
+
+    fun shoppingListsData(): Boolean {
+        var semaforo = false
+        val cursor: Cursor = mDB.rawQuery("SELECT * FROM $TABLE_LISTS", null)
+        if (cursor.moveToNext()) {
+            semaforo = true
+        }
+        cursor.close()
+        return semaforo
+    }
 }

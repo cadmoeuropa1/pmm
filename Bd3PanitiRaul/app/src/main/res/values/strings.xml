@@ -3,7 +3,6 @@
     <string name="products">Products</string>
     <string name="categories">Categories</string>
     <string name="shopping_lists">Shopping lists</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select_a_category_of_products">Select a category of products:</string>
     <string name="add_new_category">Add new category</string>
@@ -29,4 +28,6 @@
     <string name="alert_dialog_add_product">Add Product</string>
     <string name="product_add_error">Error adding the product, please try again</string>
     <string name="product_added_correct">Product added correctly.</string>
+    <string name="delete">DELETE</string>
+    <string name="add_to_shopping_list">Add to List</string>
 </resources>

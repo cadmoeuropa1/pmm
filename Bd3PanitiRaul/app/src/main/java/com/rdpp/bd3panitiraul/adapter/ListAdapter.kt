@@ -18,8 +18,14 @@ class ListAdapter(
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ShoppingListCardLayoutBinding.bind(view)
-        fun setListener(shoppingList: ShoppingList) {
-
+        fun setListener(position: Int, shoppingList: ShoppingList) {
+            binding.btnDelete.setOnClickListener {
+                listener.deleteList(shoppingList)
+                notifyItemRemoved(position)
+            }
+            binding.btnEdit.setOnClickListener {
+                listener.editList(shoppingList)
+            }
         }
     }
 
@@ -32,13 +38,17 @@ class ListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val shopList = this.lists[position]
         with(holder) {
-            setListener(shopList)
-
-
+            setListener(position, shopList)
+            binding.txtListName.text = shopList.name
         }
-
     }
 
     override fun getItemCount() = lists.size
+
+    fun setLists(lists: MutableList<ShoppingList>?) {
+        if (lists != null) {
+            this.lists = lists
+        }
+    }
 }
 

@@ -15,13 +15,14 @@ import com.rdpp.bd3panitiraul.database.ShoppingListDAO
 import com.rdpp.bd3panitiraul.databinding.FragmentProductsBinding
 import com.rdpp.bd3panitiraul.dataclass.Category
 import com.rdpp.bd3panitiraul.dataclass.Product
+import com.rdpp.bd3panitiraul.dataclass.ShoppingList
 import com.rdpp.bd3panitiraul.listener.ProductEventListener
 
 class ProductsFragment : Fragment(), ProductEventListener {
     private lateinit var mBinding: FragmentProductsBinding
     private var mActivity: MainActivity? = null
     private lateinit var database: ShoppingListDAO
-    private lateinit var adapter: ProductAdapter
+    private lateinit var adapter2: ProductAdapter
     private lateinit var layout: GridLayoutManager
 
     override fun onCreateView(
@@ -36,32 +37,30 @@ class ProductsFragment : Fragment(), ProductEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mActivity = activity as MainActivity
-        database = ShoppingListDAO(requireContext())
-        adapter = ProductAdapter(mutableListOf(), this)
+        database = ShoppingListDAO(mActivity!!.applicationContext)
+        adapter2 = ProductAdapter(mutableListOf(), this)
         layout = GridLayoutManager(requireContext(), 2)
         val productGeneral = database.getAllProducts()
-        adapter.setProducts(productGeneral)
+        adapter2.setProducts(productGeneral)
         mBinding.recyclerView.apply {
             setHasFixedSize(true)
-            adapter = this.adapter
+            adapter = adapter2
             layoutManager = layout
         }
-        mBinding.toggleButton.addOnButtonCheckedListener { toggleButton, _, _ ->
-            when (toggleButton.checkedButtonId) {
-                R.id.btnCategories -> {
-                    setRecyclerViewCategories()
-                }
-                R.id.btnAlphabet -> {
-                    setRecyclerViewAlphabetically()
-                }
-            }
-        }
+        mBinding.btnCategories.setOnClickListener { setRecyclerViewCategories() }
+        mBinding.btnAlphabet.setOnClickListener { setRecyclerViewAlphabetically() }
         mBinding.btnAddProduct.setOnClickListener {
             addNewProduct()
+
         }
     }
 
     private fun addNewProduct() {
+        Snackbar.make(
+            mBinding.root,
+            getString(R.string.product_added_correct),
+            Snackbar.LENGTH_SHORT
+        ).show()
         val builder = MaterialAlertDialogBuilder(requireContext())
         val input = EditText(requireContext())
         val input2 = EditText(requireContext())
@@ -83,57 +82,93 @@ class ProductsFragment : Fragment(), ProductEventListener {
             setPositiveButton(
                 getString(R.string.alert_dialog_add_product)
             ) { _, _ ->
+
                 val prodName = input.text.toString()
-                val cat: Category = database.selectedCat(spinner.selectedItemId)!!
+                val dato = spinner.selectedItem as Category
                 val prodImage = input2.text.toString()
-                if (database.addProduct(prodName, cat, prodImage) == -1L) {
-                    Snackbar.make(
-                        requireView(),
+                if (database.addProduct(prodName, dato, prodImage) == -1L) {
+                    Toast.makeText(
+                        mActivity!!,
                         getString(R.string.product_add_error),
-                        Snackbar.LENGTH_SHORT
+                        Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    Snackbar.make(
-                        requireView(),
+                    Toast.makeText(
+                        requireContext(),
                         getString(R.string.product_added_correct),
-                        Snackbar.LENGTH_SHORT
+                        Toast.LENGTH_SHORT
                     ).show()
+                    setNormalRecycler()
                 }
+
             }
             setNegativeButton(getString(R.string.alert_dialog_cancel), null)
             show()
-        }
 
+
+        }
     }
 
     private fun categoriesProductAdapter(): SpinnerAdapter {
         val cats = database.getAllCategories()
         val categoriesSpinner =
-            ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item)
+            ArrayAdapter<Category>(requireContext(), android.R.layout.simple_spinner_dropdown_item)
 
         if (database.categoriesData()) {
             for (i in 0 until cats.size) {
                 val cat = cats[i]
-                categoriesSpinner.add(cat.toString())
+                categoriesSpinner.add(cat)
             }
-        } else {
-            categoriesSpinner.add("No category created yet")
         }
         return categoriesSpinner
     }
 
+    private fun setNormalRecycler() {
+        val products = database.getAllProducts()
+        adapter2.setProducts(products)
+    }
+
     private fun setRecyclerViewCategories() {
         val products = database.getProductsByCategories()
-        adapter.setProducts(products)
+        adapter2.setProducts(products)
     }
 
     private fun setRecyclerViewAlphabetically() {
         val products = database.getProductsAlphabetically()
-        adapter.setProducts(products)
+        adapter2.setProducts(products)
     }
 
     override fun deleteProduct(product: Product) {
         database.deleteProduct(product.name)
     }
 
+    override fun addToList(product: Product) {
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        val input = Spinner(requireContext())
+        input.adapter = shoppingListsAdapter()
+        with(builder) {
+            setTitle("Add product to List")
+            setMessage("Select a Shopping List where to add the product to")
+            setView(input)
+            setPositiveButton("Add", null)
+            setNegativeButton("Cancel", null)
+            show()
+        }
+        //database.addProductToList(product, ShoppingList(""))
+    }
+
+    private fun shoppingListsAdapter(): SpinnerAdapter? {
+        val lists = database.getAllLists()
+        val listsSpinner =
+            ArrayAdapter<ShoppingList>(
+                requireContext(), android.R.layout.simple_spinner_dropdown_item
+            )
+        if (database.shoppingListsData()) {
+            for (i in 0 until lists.size) {
+                val list = lists[i]
+                listsSpinner.add(list)
+            }
+        }
+        return listsSpinner
+    }
 }

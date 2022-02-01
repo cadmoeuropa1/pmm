@@ -29,14 +29,14 @@
             app:singleSelection="true">
 
             <Button
-                android:id="@+id/btnAlphabet"
+                android:id="@+id/btnCategories"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/button_categories" />
 
             <Button
-                android:id="@+id/btnCategories"
+                android:id="@+id/btnAlphabet"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
