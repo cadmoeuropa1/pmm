@@ -51,8 +51,19 @@ class ProductsFragment : Fragment(), ProductEventListener {
         mBinding.btnAlphabet.setOnClickListener { setRecyclerViewAlphabetically() }
         mBinding.btnAddProduct.setOnClickListener {
             addNewProduct()
-
         }
+        setAutoCompleteTextView()
+    }
+
+    private fun setAutoCompleteTextView() {
+        val autoComplete = mBinding.autoCompleteTextView
+        val categories = database.getAllCategories()
+        val categoriesStrings = mutableListOf<String>()
+        for (product in categories)
+            categoriesStrings.add(product.name)
+        val adapterACTV =
+            ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, categoriesStrings)
+        autoComplete.setAdapter(adapterACTV)
     }
 
     private fun addNewProduct() {
@@ -150,11 +161,14 @@ class ProductsFragment : Fragment(), ProductEventListener {
             setTitle("Add product to List")
             setMessage("Select a Shopping List where to add the product to")
             setView(input)
-            setPositiveButton("Add", null)
+            setPositiveButton("Add") { _, _ ->
+                val shList = input.selectedItem as ShoppingList
+                database.addProductToList(product, shList, 1)
+            }
             setNegativeButton("Cancel", null)
             show()
         }
-        //database.addProductToList(product, ShoppingList(""))
+        //database.addProductToList(product, lis)
     }
 
     private fun shoppingListsAdapter(): SpinnerAdapter? {

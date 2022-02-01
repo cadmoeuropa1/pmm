@@ -14,7 +14,8 @@ import com.rdpp.bd3panitiraul.dataclass.Product
 import com.rdpp.bd3panitiraul.listener.ProductEventListener
 
 class ProductAdapter(
-    private var products: MutableList<Product>, private var listener: ProductEventListener) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+    private var products: MutableList<Product>, private var listener: ProductEventListener
+) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
     private lateinit var context: Context
     private lateinit var database: ShoppingListDAO
 
@@ -58,9 +59,6 @@ class ProductAdapter(
             this.products = productsR
             notifyDataSetChanged()
         }
-
-    }
-    fun deleteProduct(product: Product){
 
     }
 }

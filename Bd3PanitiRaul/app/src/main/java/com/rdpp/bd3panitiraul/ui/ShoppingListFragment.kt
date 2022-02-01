@@ -1,5 +1,6 @@
 package com.rdpp.bd3panitiraul.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -87,7 +88,8 @@ class ShoppingListFragment : Fragment(), ListEventListener {
     }
 
     override fun editList(shoppingList: ShoppingList) {
-        TODO("Not yet implemented")
+        val intent = Intent(mActivity, EditShoppingList::class.java)
+        startActivity(intent)
     }
 
 }

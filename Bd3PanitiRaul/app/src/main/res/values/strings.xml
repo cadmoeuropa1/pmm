@@ -30,4 +30,5 @@
     <string name="product_added_correct">Product added correctly.</string>
     <string name="delete">DELETE</string>
     <string name="add_to_shopping_list">Add to List</string>
+    <string name="image_of_the_product_in_the_list">Image of the product in the list</string>
 </resources>

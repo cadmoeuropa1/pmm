@@ -118,7 +118,7 @@ open class ShoppingListDAO(context: Context) {
 
     fun getProductsAlphabetically(): MutableList<Product> {
         val list = ArrayList<Product>()
-        val sql = "SELECT * FROM $TABLE_PRODUCTS ORDER BY name ASC"
+        val sql = "SELECT * FROM $TABLE_PRODUCTS ORDER BY name DESC"
         val cursor = mDB.rawQuery(sql, null)
         if (cursor.moveToFirst()) {
             do {
@@ -160,8 +160,15 @@ open class ShoppingListDAO(context: Context) {
         return result
     }
 
-    fun addProductToList(product: Product, shoppingList: ShoppingList) {
-        TODO("Not yet implemented")
+    fun addProductToList(product: Product, shoppingList: ShoppingList, quantity:Int): Long {
+        var result: Long
+        val values = ContentValues()
+        values.put("list_Id", shoppingList.list_Id)
+        values.put("prod_Id", product.prod_Id)
+        values.put("quantity", quantity)
+        result = mDB.insert(TABLE_LISTS_PRODUCTS, null, values)
+
+        return result
     }
 
     fun getAllLists(): MutableList<ShoppingList> {
@@ -198,5 +205,9 @@ open class ShoppingListDAO(context: Context) {
         }
         cursor.close()
         return semaforo
+    }
+
+    fun getProductNameFromList(listId: Int): CharSequence? {
+        TODO("Not yet implemented")
     }
 }
