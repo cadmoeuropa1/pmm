@@ -43,6 +43,13 @@
                 android:text="@string/button_alphabetically" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:completionThreshold="0" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="400dp">
@@ -63,7 +70,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
         android:text="@string/add_new_product" />
 
 </FrameLayout>

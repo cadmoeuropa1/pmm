@@ -6,4 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".ui.EditShoppingList">
 
+    <FrameLayout
+        android:id="@+id/frameTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/frameRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="26sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameTitle">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/product_list_layout">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </FrameLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
