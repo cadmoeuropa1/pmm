@@ -1,4 +1,4 @@
-package com.rdpp.fragmentactivity
+package com.rdpp.fragmentPaniti
 
 import org.junit.Test
 
