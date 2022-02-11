@@ -2,8 +2,11 @@ package com.rdpp.fragmentPaniti.database
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import java.io.File
 
 class ProgrammersDAO(context: Context) {
+
+
     private val database: SQLiteDatabase
 
     companion object {
@@ -19,4 +22,8 @@ class ProgrammersDAO(context: Context) {
         database = structure.writableDatabase
     }
 
+    fun loadUsers() {
+        TODO("Método que insertará los primeros usuarios desde el archivo de recursos users.xml")
+        val xmlUser = File("./users.xml")
+    }
 }
