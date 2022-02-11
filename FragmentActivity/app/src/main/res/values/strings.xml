@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">FragmentActivity</string>
     <string name="url_image">https://www.campus-training.info/wp-content/uploads/2019/10/cuanto-gana-un-programador-web-articulo.jpg</string>
+    <string name="login_description">Aplicación de programadores para programadores :)</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="button_login">LOGIN</string>
 </resources>

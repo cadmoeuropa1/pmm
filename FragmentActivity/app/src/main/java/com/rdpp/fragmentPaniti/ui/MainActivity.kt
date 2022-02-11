@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.rdpp.fragmentPaniti.database.ProgrammersDAO
+import com.rdpp.fragmentPaniti.dataclass.User
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,19 +34,28 @@ class MainActivity : AppCompatActivity() {
                 binding.frameLogo.visibility = View.INVISIBLE
             }, 3000
         )
-        database.loadUsers()
+        loadUsers()
 
     }
 
-    /*
-    private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
-        val formatter = SimpleDateFormat(format, locale)
-        return formatter.format(this)
-    }
+    fun loadUsers() {
+        val loginArray = resources.getStringArray(R.array.logins)
+        val passArray = resources.getStringArray(R.array.passwords)
+        val typesArray = resources.getStringArray(R.array.types)
+        for (u in loginArray.indices) {
+            val user = User(login = loginArray[u], pass = passArray[u], type = typesArray[u])
+            database.addUser(user)
+        }
 
-    private fun getCurrentDateTime(): Date {
-        return Calendar.getInstance().time
-    }
-    */
+        /*
+        private fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+            val formatter = SimpleDateFormat(format, locale)
+            return formatter.format(this)
+        }
 
+        private fun getCurrentDateTime(): Date {
+            return Calendar.getInstance().time
+        }
+        */
+    }
 }

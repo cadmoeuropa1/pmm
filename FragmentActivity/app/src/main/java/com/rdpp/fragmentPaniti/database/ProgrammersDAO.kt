@@ -1,8 +1,9 @@
 package com.rdpp.fragmentPaniti.database
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import java.io.File
+import com.rdpp.fragmentPaniti.dataclass.User
 
 class ProgrammersDAO(context: Context) {
 
@@ -22,8 +23,13 @@ class ProgrammersDAO(context: Context) {
         database = structure.writableDatabase
     }
 
-    fun loadUsers() {
-        TODO("Método que insertará los primeros usuarios desde el archivo de recursos users.xml")
-        val xmlUser = File("./users.xml")
+
+    fun addUser(user: User) {
+        val values = ContentValues()
+        values.put("login", user.login)
+        values.put("pass", user.pass)
+        values.put("type", user.type)
     }
+
+
 }

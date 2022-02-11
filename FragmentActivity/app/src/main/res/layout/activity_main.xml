@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context="com.rdpp.fragmentPaniti.ui.MainActivity">
 
     <FrameLayout
         android:id="@+id/frameLogo"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:maxLines="3"
-                android:text="DESCRIPCIÓN"
+                android:text="@string/login_description"
                 android:textAlignment="center" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="FECHA DE CREACIÓN"
+                android:text=""
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:text="Username"
+                android:text="@string/login_username"
                 android:textAlignment="center" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:text="Password"
+                android:text="@string/login_password"
                 android:textAlignment="center" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,10 +115,12 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
+        android:text="@string/button_login"
         app:icon="@drawable/ic_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLogin"></com.google.android.material.button.MaterialButton>
+        app:layout_constraintTop_toBottomOf="@id/frameLogin">
+
+    </com.google.android.material.button.MaterialButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

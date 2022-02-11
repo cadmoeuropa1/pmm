@@ -12,16 +12,16 @@ class ProgrammersDB(
     override fun onCreate(db: SQLiteDatabase?) {
         try {
             val createEventsTable =
-                "CREATE TABLE ${ProgrammersDAO.TABLE_EVENTS} (event_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "date TIMESTAMP, cat_Id INTEGER, image TEXT)"
+                "CREATE TABLE ${ProgrammersDAO.TABLE_EVENTS} (event_Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " date DATE, title TEXT, description TEXT)"
 
             val createUserEventTable =
-                "CREATE TABLE ${ProgrammersDAO.TABLE_USER_EVENT} (cat_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "name TEXT UNIQUE)"
+                "CREATE TABLE ${ProgrammersDAO.TABLE_USER_EVENT} (id_UserEvent INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "id_User INTEGER, id_Event INTEGER)"
 
             val createUserTable =
-                "CREATE TABLE ${ProgrammersDAO.TABLE_USER} (list_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "name TEXT UNIQUE)"
+                "CREATE TABLE ${ProgrammersDAO.TABLE_USER} (user_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "login TEXT, pass TEXT, type TEXT(1))"
 
             db!!.execSQL(createEventsTable)
             db.execSQL(createUserEventTable)

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="logins">
+        <item>user1</item>//U
+        <item>user2</item>//A
+        <item>user3</item>//A
+        <item>user4</item>//U
+        <item>user5</item>//U
+    </string-array>
+    <string-array name="passwords">
+        <item>12345</item>
+        <item>12345</item>
+        <item>12345</item>
+        <item>1234</item>
+        <item>123</item>
+    </string-array>
+    <string-array name="types">
+        <item>A</item>
+        <item>U</item>
+        <item>U</item>
+        <item>A</item>
+        <item>A</item>
+    </string-array>
+</resources>
