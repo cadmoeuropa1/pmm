@@ -1,23 +1,14 @@
 <resources>
     <string name="app_name">PanitiRaul</string>
-    <string name="name">Raúl-Denis Paniti Paniti</string>
-    <string name="registro">Registro</string>
-    <string name="register">Registro</string>
-    <string name="callButton">Hospital</string>
-    <string name="builderTitle">Permiso para llamar</string>
-    <string name="builderMessage">Si no concede este permiso la función de llamar al hospital no se podrá utilizar. ¿Quiere conceder el permiso a la aplicación?</string>
-    <string name="builderAccept">Aceptar</string>
-    <string name="builderDeny">Cancelar</string>
-    <string name="permit_error">No se ha concedido el permiso necesario</string>
-    <string name="permission_granted">Se ha concedido el permiso</string>
-    <string name="dni">DNI</string>
-    <string name="NombreApellidos">Nombre y apellidos</string>
-    <string name="annoTitulacion">Año de titulacion</string>
-    <string name="registroInicio">REGISTRO</string>
-    <string name="informacion">INFORMACION</string>
-    <string name="codigo_especialidad">Código Especialidad</string>
-    <string name="cancelar_registro">Cancelar</string>
-    <string name="registrar">Registrar</string>
-    <string name="fin_app">Fin app</string>
-    <string name="nombreEspecialidad">Especialidad:</string>
+    <string name="cifEmpresa">13178946-F</string>
+    <string name="nombreEmpresa">Modas Paniti</string>
+    <string name="login_username">Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="button_login">LOGIN</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="imagenProducto1">https://cdn.fashiola.es/L489843069/michael-kors-chino-skinny-de-algodon-elastico.jpg</string>
+    <string name="imagenProducto2">https://www.isclaujeans.com/wp-content/uploads/2017/07/camiseta-basica-manga-corta-hombre-1-CH-AZ33W.jpg</string>
+    <string name="imagenProducto3">https://i.ebayimg.com/images/g/rG8AAOxy4dNS-mt1/s-l300.jpg</string>
+    <string name="imagenProducto4"><![CDATA[https://images.asos-media.com/products/sudadera-negra-con-capucha-y-estampado-por-delante-y-por-detras-de-collusion/13528894-4?$n_640w$&wid=513&fit=constrain]]></string>
 </resources>

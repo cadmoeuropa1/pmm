@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PanitiRaul</string>
+    <string name="name">Raúl-Denis Paniti Paniti</string>
+    <string name="registro">Registro</string>
+    <string name="register">Registro</string>
+    <string name="callButton">Hospital</string>
+    <string name="builderTitle">Permiso para llamar</string>
+    <string name="builderMessage">Si no concede este permiso la función de llamar al hospital no se podrá utilizar. ¿Quiere conceder el permiso a la aplicación?</string>
+    <string name="builderAccept">Aceptar</string>
+    <string name="builderDeny">Cancelar</string>
+    <string name="permit_error">No se ha concedido el permiso necesario</string>
+    <string name="permission_granted">Se ha concedido el permiso</string>
+    <string name="dni">DNI</string>
+    <string name="NombreApellidos">Nombre y apellidos</string>
+    <string name="annoTitulacion">Año de titulacion</string>
+    <string name="registroInicio">REGISTRO</string>
+    <string name="informacion">INFORMACION</string>
+    <string name="codigo_especialidad">Código Especialidad</string>
+    <string name="cancelar_registro">Cancelar</string>
+    <string name="registrar">Registrar</string>
+    <string name="fin_app">Fin app</string>
+    <string name="nombreEspecialidad">Especialidad:</string>
+</resources>

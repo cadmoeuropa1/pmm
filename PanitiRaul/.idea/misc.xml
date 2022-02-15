@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/activity_informacion.xml" value="0.19427083333333334" />
-        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/activity_registro.xml" value="0.25" />
-        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/layout_especialidad.xml" value="0.22" />
+        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout-xlarge/activity_container.xml" value="0.156640625" />
+        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/activity_container.xml" value="0.20885416666666667" />
+        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/categoria_tarjeta.xml" value="0.18" />
+        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/fragment_categorias.xml" value="0.20885416666666667" />
+        <entry key="..\:/pmm/PanitiRaul/app/src/main/res/layout/fragment_productos.xml" value="0.19427083333333334" />
       </map>
     </option>
   </component>

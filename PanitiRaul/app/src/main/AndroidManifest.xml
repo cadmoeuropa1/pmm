@@ -3,7 +3,6 @@
     package="com.rdpp.panitiraul">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PanitiRaul">
         <activity
-            android:name=".Informacion"
-            android:exported="false" />
-        <activity
-            android:name=".Registro"
+            android:name=".ContainerActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
