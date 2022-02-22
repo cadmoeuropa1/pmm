@@ -16,8 +16,8 @@ class ProgrammersDB(
                         " date DATE, title TEXT, description TEXT)"
 
             val createUserEventTable =
-                "CREATE TABLE ${ProgrammersDAO.TABLE_USER_EVENT} (id_UserEvent INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "id_User INTEGER, id_Event INTEGER)"
+                "CREATE TABLE ${ProgrammersDAO.TABLE_USER_EVENT} (userEvent_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "user_Id INTEGER, event_Id INTEGER)"
 
             val createUserTable =
                 "CREATE TABLE ${ProgrammersDAO.TABLE_USER} (user_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
