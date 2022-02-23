@@ -3,20 +3,25 @@ package com.rdpp.fragmentPaniti.ui
 import FragmentPaniti.R
 import FragmentPaniti.databinding.ActivityMainBinding
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import com.rdpp.fragmentPaniti.database.ProgrammersDAO
+import com.rdpp.fragmentPaniti.dataclass.Event
 import com.rdpp.fragmentPaniti.dataclass.User
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var database: ProgrammersDAO
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -38,13 +43,35 @@ class MainActivity : AppCompatActivity() {
             }, 3000
         )
         loadUsers()
+        loadEvents()
         binding.btnLogin.setOnClickListener {
             validateUser()
         }
 
     }
 
-    fun loadUsers() {
+    private fun loadEvents() {
+        val event1 = Event(
+            date = "2022-02-22",
+            title = "Evento para Principiantes",
+            description = "Evento enfocado a principiantes, para construir una base enfocada a la programación orientada a objetos"
+        )
+        val event2 = Event(
+            date = "2022-02-27",
+            title = "Evento para usuarios Medios",
+            description = "Evento enfocado a personas con conocimientos medios de programación Orientada a Objetos"
+        )
+        val event3 = Event(
+            date = "2022-03-01",
+            title = "Evento para para Expertos",
+            description = "Evento enfocado en los usuarios expertos, desarrolladores, etc..."
+        )
+        database.addEvent(event1)
+        database.addEvent(event2)
+        database.addEvent(event3)
+    }
+
+    private fun loadUsers() {
         val loginArray = resources.getStringArray(R.array.logins)
         val passArray = resources.getStringArray(R.array.passwords)
         val typesArray = resources.getStringArray(R.array.types)

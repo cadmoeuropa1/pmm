@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="logins">
-        <item>user1</item>//U
-        <item>user2</item>//A
-        <item>user3</item>//A
-        <item>user4</item>//U
-        <item>user5</item>//U
+        <item>user1</item>
+        <item>user2</item>
+        <item>user3</item>
+        <item>user4</item>
+        <item>user5</item>
     </string-array>
     <string-array name="passwords">
         <item>12345</item>

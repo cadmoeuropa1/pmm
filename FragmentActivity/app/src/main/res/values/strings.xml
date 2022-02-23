@@ -7,4 +7,9 @@
     <string name="button_login">LOGIN</string>
     <string name="login_error_empty_fields">Login fields can\'t be empty, try again</string>
     <string name="login_error_not_found">User or password not found, try again.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="floating_action_button_for_adding_new_events">Floating Action Button for adding new Events</string>
+    <string name="edit_date_button">EDIT DATE</string>
+    <string name="app_author">Raúl-Denis Paniti Paniti | 2022</string>
 </resources>
