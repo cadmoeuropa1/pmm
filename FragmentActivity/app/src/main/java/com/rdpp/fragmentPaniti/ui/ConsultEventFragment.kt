@@ -96,6 +96,8 @@ class ConsultEventFragment : Fragment(), EventListener {
     private fun getCurrentDateTime(): Date {
         return Calendar.getInstance().time
     }
+
+
 }
 
 

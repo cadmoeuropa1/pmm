@@ -84,6 +84,14 @@ class ProgrammersDAO(context: Context) {
         database.insert(TABLE_EVENTS, null, values)
     }
 
+    /*
+    fun addEvent2(event: Event): Int {
+        val sql = "INSERT INTO $TABLE_EVENTS (date, description, title) VALUES ()"
+        database.insert(TABLE_EVENTS, null)
+        return 0
+    }
+     */
+
     fun getUser(user_Id: Int?): User? {
         var user: User? = null
         val sql = "SELECT * from $TABLE_USER WHERE user_Id ='$user_Id'"
@@ -103,7 +111,7 @@ class ProgrammersDAO(context: Context) {
 
     fun getEvents(date: String): MutableList<Event> {
         val events: MutableList<Event> = ArrayList()
-        val sql = "SELECT * FROM Events WHERE date > '$date'"
+        val sql = "SELECT * FROM Events WHERE date > '$date' ORDER BY date ASC"
         val cursor: Cursor = database.rawQuery(sql, null)
         if (cursor.moveToFirst()) {
             do {
@@ -121,6 +129,19 @@ class ProgrammersDAO(context: Context) {
         if (!cursor.isClosed)
             cursor.close()
         return events
+    }
+
+    fun getSingleEvent(eventId: Int): Event? {
+        val sql = "SELECT * FROM Events WHERE event_Id = '$eventId'"
+        val cursor: Cursor = database.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            return Event(
+                date = cursor.getString(cursor.getColumnIndexOrThrow("date")),
+                title = cursor.getString(cursor.getColumnIndexOrThrow("title")),
+                description = cursor.getString(cursor.getColumnIndexOrThrow("description"))
+            )
+        } else
+            return null
     }
 }
 

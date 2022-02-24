@@ -23,9 +23,7 @@ class EventAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemEventCardLayoutBinding.bind(view)
         fun setListener(event: Event) {
-            with(binding.root) {
-                setOnClickListener { listener.editEvent(event.idEvent) }
-            }
+            binding.btnEditDate.setOnClickListener { listener.editEvent(event.idEvent) }
         }
     }
 

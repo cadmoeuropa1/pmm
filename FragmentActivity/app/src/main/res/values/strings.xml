@@ -15,4 +15,5 @@
     <string name="title">Event title</string>
     <string name="date">Event date</string>
     <string name="description">Event description</string>
+    <string name="instructions_edit">To change the date of the event please press on the date field</string>
 </resources>
