@@ -70,12 +70,22 @@ class MainScreen : AppCompatActivity() {
         val args = Bundle()
         args.putInt("user_Id", user.idUser)
         fragment.arguments = args
-        if (savedInstanceState == null) {
-            fragmentTransaction.add(R.id.mainContainer, fragment)
-            fragmentTransaction.add(R.id.fragmentContainer, fragment)
+        fragment2.arguments = args
+        if (user.type == "A") {
+            if (savedInstanceState == null) {
+                fragmentTransaction.add(R.id.mainContainer, fragment)
+                fragmentTransaction.add(R.id.fragmentContainer, fragment2)
+            } else {
+                fragmentTransaction.replace(R.id.mainContainer, fragment)
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment2)
+            }
         } else {
-            fragmentTransaction.replace(R.id.mainContainer, fragment)
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment2)
+            if (savedInstanceState == null) {
+                binding.mainContainer!!.fitsSystemWindows = true
+                fragmentTransaction.add(R.id.mainContainer, fragment)
+            } else {
+                fragmentTransaction.replace(R.id.mainContainer, fragment)
+            }
 
         }
         fragmentTransaction.addToBackStack(null)
@@ -84,6 +94,9 @@ class MainScreen : AppCompatActivity() {
 
     fun editEvent(idEvent: Int) {
         val fragment = EditEventFragment()
+        val args = Bundle()
+        args.putInt("event_Id", idEvent)
+        fragment.arguments = args
         if (binding.fragmentContainer == null) {
             fragmentTransaction.replace(R.id.fragContainer, fragment)
         } else {

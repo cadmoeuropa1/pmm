@@ -1,60 +1,49 @@
 package com.rdpp.fragmentPaniti.ui
 
+import FragmentPaniti.databinding.FragmentAddEventBinding
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import FragmentPaniti.R
+import androidx.fragment.app.Fragment
+import com.rdpp.fragmentPaniti.database.ProgrammersDAO
+import com.rdpp.fragmentPaniti.dataclass.Event
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddEventFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddEventFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var mBinding: FragmentAddEventBinding
+    private var mActivity: MainScreen? = null
+    private lateinit var database: ProgrammersDAO
+    private lateinit var events: MutableList<Event>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_event, container, false)
+        super.onCreate(savedInstanceState)
+        mBinding = FragmentAddEventBinding.inflate(inflater, container, false)
+        return mBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddEventFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddEventFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mActivity = activity as MainScreen
+        database = ProgrammersDAO(mActivity!!.applicationContext)
+        mBinding.tieDate.setOnClickListener { showDatePicker() }
+        mBinding.btnAddEvent.setOnClickListener { addEvent() }
+    }
+
+    private fun showDatePicker() {
+        val datePicker = DatePickerFragment { day, month, year -> onDateSelected(day, month, year) }
+        parentFragmentManager.let { manager -> datePicker.show(manager, "datePicker") }
+    }
+
+    private fun onDateSelected(day: Int, month: Int, year: Int) {
+        mBinding.tieDate.setText("$year-" + month + 1 + "-$day")
+    }
+
+    private fun addEvent() {
+
     }
 }

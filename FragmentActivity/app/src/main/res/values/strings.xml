@@ -12,4 +12,7 @@
     <string name="floating_action_button_for_adding_new_events">Floating Action Button for adding new Events</string>
     <string name="edit_date_button">EDIT DATE</string>
     <string name="app_author">Raúl-Denis Paniti Paniti | 2022</string>
+    <string name="title">Event title</string>
+    <string name="date">Event date</string>
+    <string name="description">Event description</string>
 </resources>

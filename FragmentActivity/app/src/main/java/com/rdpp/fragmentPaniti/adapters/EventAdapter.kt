@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rdpp.fragmentPaniti.dataclass.Event
+import com.rdpp.fragmentPaniti.dataclass.User
 import com.rdpp.fragmentPaniti.listeners.EventListener
 
 class EventAdapter(
     private var events: MutableList<Event>,
-    private var listener: EventListener
+    private var listener: EventListener,
+    private var user: User
 ) : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -43,6 +45,9 @@ class EventAdapter(
             binding.txtTitle.text = "Event: " + event.title
             binding.txtDate.text = "Date: " + event.date
             binding.txtDescription.text = event.description
+            if (user.type == "U") {
+                binding.btnEditDate.visibility = View.INVISIBLE
+            }
         }
 
     }

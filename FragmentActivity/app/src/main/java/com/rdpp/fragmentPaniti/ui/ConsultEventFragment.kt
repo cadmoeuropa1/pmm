@@ -46,7 +46,7 @@ class ConsultEventFragment : Fragment(), EventListener {
         mBinding.fabAddEvent.setOnClickListener {
             mActivity?.addEvent()
         }
-        if (user?.type == "U") {
+        if (user.type == "U") {
             mBinding.fabAddEvent.visibility = View.INVISIBLE
         }
     }
@@ -58,7 +58,7 @@ class ConsultEventFragment : Fragment(), EventListener {
 
 
     private fun configurarRecycler() {
-        adapterM = EventAdapter(mutableListOf(), this)
+        adapterM = EventAdapter(mutableListOf(), this, user)
         val gridLayout = GridLayoutManager(requireActivity(), 1)
         getEvents()
         with(mBinding.recyclerView) {
