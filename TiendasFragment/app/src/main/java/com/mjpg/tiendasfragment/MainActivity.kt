@@ -10,10 +10,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-       val fragmentManager = supportFragmentManager;
+        val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         if (binding.fragContenedor != null) {
-            val fragment =ConsultaFragment()
+            val fragment = ConsultaFragment()
             fragmentTransaction.add(R.id.frag_contenedor, fragment)
 
         } else {
@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    fun anadir(){
+
+    fun anadir() {
         val fragmentManager = supportFragmentManager;
         val fragmentTransaction = fragmentManager.beginTransaction()
         if (binding.fragContenedor != null) {
