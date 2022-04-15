@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Komorebi</string>
+    <string name="user">Usuaria</string>
+    <string name="password">Contraseña</string>
+    <string name="login">ENTRAR</string>
+    <string name="menu_news">Noticias</string>
+    <string name="menu_workshop">Talleres</string>
+    <string name="menu_forum">Foro</string>
+    <string name="profile_username">Usuaria</string>
+    <string name="top_app_bar">Komorebi</string>
+    <string name="menu_chats">Chats</string>
+    <string name="profile_alias">Alias</string>
+    <string name="menu_info">Darse cuenta</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="subtitle">Personal</string>
+</resources>

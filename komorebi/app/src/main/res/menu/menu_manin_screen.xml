@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/btn_News"
+            android:enabled="true"
+            android:icon="@drawable/ic_news"
+            android:title="@string/menu_news">
+
+        </item>
+        <item
+            android:id="@+id/btn_Workshop"
+            android:enabled="true"
+            android:icon="@drawable/ic_workshops"
+            android:title="@string/menu_workshop">
+
+        </item>
+        <item
+            android:id="@+id/btn_Forum"
+            android:enabled="true"
+            android:icon="@drawable/ic_forum"
+            android:title="@string/menu_forum">
+
+        </item>
+        <item
+            android:id="@+id/btn_Chat"
+            android:enabled="true"
+            android:icon="@drawable/ic_chats"
+            android:title="@string/menu_chats">
+
+        </item>
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/subtitle"
+            android:title="@string/subtitle">
+            <menu>
+                <item
+                    android:id="@+id/menu_information"
+                    android:enabled="true"
+                    android:icon="@drawable/ic_information"
+                    android:title="@string/menu_info" />
+
+
+                <item
+                    android:id="@+id/menu_profile"
+                    android:enabled="true"
+                    android:icon="@drawable/ic_profile"
+                    android:title="@string/menu_profile" />
+
+            </menu>
+        </item>
+    </group>
+</menu>
