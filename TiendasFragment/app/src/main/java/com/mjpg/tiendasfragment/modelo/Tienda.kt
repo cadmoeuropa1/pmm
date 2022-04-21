@@ -1,4 +1,4 @@
-package com.mjpg.tiendasfragment
+package com.mjpg.tiendasfragment.modelo
 
 data class Tienda( var id: Long=0 ,
                    var name:String,

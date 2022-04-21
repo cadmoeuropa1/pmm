@@ -1,4 +1,4 @@
-package com.mjpg.tiendasfragment
+package com.mjpg.tiendasfragment.bd
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

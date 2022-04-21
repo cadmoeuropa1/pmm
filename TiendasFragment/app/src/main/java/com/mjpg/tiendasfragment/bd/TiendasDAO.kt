@@ -1,9 +1,10 @@
-package com.mjpg.tiendasfragment
+package com.mjpg.tiendasfragment.bd
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import com.mjpg.tiendasfragment.modelo.Tienda
 
 class TiendasDAO(contexto: Context) {
     private val mBD: SQLiteDatabase
@@ -61,12 +62,12 @@ class TiendasDAO(contexto: Context) {
             cursor.close()
         return lista
     }
-    fun primerElemento():Tienda?{
-        var elemento:Tienda?=null
+    fun primerElemento(): Tienda?{
+        var elemento: Tienda?=null
         var sql="select * from $TABLA_TIENDA"
         val cursor:Cursor=mBD.rawQuery(sql,null)
         if(cursor.moveToFirst())
-            elemento=Tienda(
+            elemento= Tienda(
                 cursor.getLong(0),
                 cursor.getString(cursor.getColumnIndexOrThrow("name")),
                 cursor.getString(cursor.getColumnIndexOrThrow("phone")),
@@ -78,12 +79,12 @@ class TiendasDAO(contexto: Context) {
         return elemento
     }
     fun getStoreById(id:Long): Tienda? {
-        var elemento:Tienda?=null
+        var elemento: Tienda?=null
         var sql="select * from $TABLA_TIENDA where id=$id"
         val cursor: Cursor = mBD.rawQuery(sql,null)
 
         if (cursor.moveToFirst()) {
-            elemento=Tienda(
+            elemento= Tienda(
                 cursor.getLong(0),
                 cursor.getString(cursor.getColumnIndexOrThrow("name")),
                 cursor.getString(cursor.getColumnIndexOrThrow("phone")),

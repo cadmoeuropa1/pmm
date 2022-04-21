@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        fragmentTransaction = fragmentManager.beginTransaction()
+        /*fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.containerMain, CategoriesFragment())
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
@@ -40,7 +40,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
-        }
+        }*/
+        val string = "mail.cobertec.com:1433"
+        val splits = string.split(":")
+        println(splits.size)
     }
 
     private fun setFragment(fragment: Fragment) {

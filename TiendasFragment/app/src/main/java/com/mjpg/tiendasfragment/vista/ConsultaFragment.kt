@@ -1,12 +1,19 @@
-package com.mjpg.tiendasfragment
+package com.mjpg.tiendasfragment.vista
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.mjpg.tiendasfragment.adaptadores.AdaptadorTienda
+import com.mjpg.tiendasfragment.adaptadores.EventosListener
+import com.mjpg.tiendasfragment.modelo.Tienda
+import com.mjpg.tiendasfragment.bd.TiendasDAO
 import com.mjpg.tiendasfragment.databinding.ConsultaBinding
+import com.mjpg.tiendasfragment.vistamodelo.VistaModelo
+import com.mjpg.tiendasfragment.vistamodelo.VistaModeloFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,6 +26,7 @@ class ConsultaFragment : Fragment(), EventosListener {
     private lateinit var tiendas: MutableList<Tienda>
     private lateinit var db: TiendasDAO;
     private lateinit var adaptador: AdaptadorTienda
+    private lateinit var viewModelo: VistaModelo
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +39,8 @@ class ConsultaFragment : Fragment(), EventosListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mActivity = activity as MainActivity
+        val viewModeloFactory= VistaModeloFactory(0)
+        viewModelo = ViewModelProvider(this.requireActivity(),viewModeloFactory).get(VistaModelo::class.java)
         db = TiendasDAO(mActivity!!.applicationContext)
         mBinding.fab.setOnClickListener {
             mActivity?.anadir()
@@ -70,7 +80,8 @@ class ConsultaFragment : Fragment(), EventosListener {
 
 
     override fun editar(id: Long) {
-        TODO("Not yet implemented")
+        viewModelo.setIdentificador(id)
+        //mActivity?.editar(id)
     }
 
     override fun onFavorito(tienda: Tienda) {
