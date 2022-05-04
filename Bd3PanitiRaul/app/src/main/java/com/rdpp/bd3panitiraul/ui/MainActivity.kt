@@ -1,5 +1,6 @@
 package com.rdpp.bd3panitiraul.ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -41,9 +42,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }*/
-        val string = "mail.cobertec.com:1433"
-        val splits = string.split(":")
-        println(splits.size)
+
     }
 
     private fun setFragment(fragment: Fragment) {
@@ -54,5 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    
 
 }

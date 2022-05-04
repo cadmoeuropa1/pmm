@@ -1,6 +1,7 @@
 package com.rdpp.bd3panitiraul.adapter
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.rdpp.bd3panitiraul.R
 import com.rdpp.bd3panitiraul.databinding.ShoppingListCardLayoutBinding
 import com.rdpp.bd3panitiraul.dataclass.ShoppingList
 import com.rdpp.bd3panitiraul.listener.ListEventListener
+
 
 class ListAdapter(
     private var lists: MutableList<ShoppingList>,
@@ -50,5 +52,7 @@ class ListAdapter(
             this.lists = lists
         }
     }
+
+
 }
 
