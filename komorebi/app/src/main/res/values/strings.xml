@@ -13,4 +13,9 @@
     <string name="menu_info">Darse cuenta</string>
     <string name="menu_profile">Perfil</string>
     <string name="subtitle">Personal</string>
+    <string name="news_article_image">Imagen de la noticia</string>
+    <string name="news_article_title">Titulo</string>
+    <string name="news_article_article">Texto de la noticia</string>
+    <string name="news_article_share">Compartir</string>
+    <string name="news_article_view">Visualizar</string>
 </resources>

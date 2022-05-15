@@ -1,4 +1,4 @@
-package com.rdpp.komorebi
+package com.rdpp.komorebi.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,8 @@ class Login : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.txtDate.setText("Siu")
 
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, MainScreen::class.java)
