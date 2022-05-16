@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rdpp.komorebi.R
+import com.rdpp.komorebi.database.KomorebiDAO
 import com.rdpp.komorebi.databinding.NewsCardLayoutBinding
 import com.rdpp.komorebi.listener.ArticleEventListener
 import com.rdpp.komorebi.model.Article
@@ -15,6 +16,7 @@ class ArticleAdapter(
     private var listener: ArticleEventListener
 ) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     private lateinit var context: Context
+
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = NewsCardLayoutBinding.bind(view)
@@ -39,7 +41,7 @@ class ArticleAdapter(
         with(holder) {
             setListener(position, article)
             binding.txtTitle.text = article.name
-            binding.txtDescription.text = article.article
+            binding.txtDate.text = article.date
         }
     }
 

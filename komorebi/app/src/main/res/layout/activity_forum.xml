@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E3DEFE"
-    tools:context=".view.WorkshopActivity">
+    tools:context=".view.ForumActivity">
 
     <TextView
         android:id="@+id/txtHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/header_workshop"
+        android:text="@string/header_forum"
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold | italic"

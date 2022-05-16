@@ -18,4 +18,9 @@
     <string name="news_article_article">Texto de la noticia</string>
     <string name="news_article_share">Compartir</string>
     <string name="news_article_view">Visualizar</string>
+    <string name="header_forum">FORO</string>
+    <string name="header_news">ULTIMAS NOTICIAS</string>
+    <string name="header_information">DATE CUENTA</string>
+    <string name="header_workshop">TALLERES</string>
+    <string name="news_article_date">Fecha</string>
 </resources>

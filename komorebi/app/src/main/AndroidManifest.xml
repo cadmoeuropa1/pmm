@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Komorebi">
         <activity
+            android:name=".view.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.InformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ChatsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ForumActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.WorkshopActivity"
             android:exported="false" />
         <activity

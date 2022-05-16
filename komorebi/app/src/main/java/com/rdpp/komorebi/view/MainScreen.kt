@@ -1,5 +1,6 @@
 package com.rdpp.komorebi.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Window
 import android.widget.Toast
@@ -22,27 +23,27 @@ class MainScreen : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.btn_News -> {
-                    Toast.makeText(this, "Prueba ${it.title.toString()}", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, NewsActivity::class.java))
                     true
                 }
                 R.id.btn_Chat -> {
-                    Toast.makeText(this, "Prueba ${it.title.toString()}", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, ChatsActivity::class.java))
                     true
                 }
                 R.id.btn_Forum -> {
-                    Toast.makeText(this, "Prueba ${it.title.toString()}", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, ForumActivity::class.java))
                     true
                 }
                 R.id.btn_Workshop -> {
-                    Toast.makeText(this, "Prueba ${it.title.toString()}", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, WorkshopActivity::class.java))
                     true
                 }
                 R.id.menu_information -> {
-                    Toast.makeText(this, "Prueba ${it.title.toString()}", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, InformationActivity::class.java))
                     true
                 }
                 R.id.menu_profile -> {
-                    Toast.makeText(this, "Prueba ${it.title.toString()}", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, ProfileActivity::class.java))
                     true
                 }
                 else -> {
