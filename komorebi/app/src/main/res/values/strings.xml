@@ -23,4 +23,5 @@
     <string name="header_information">DATE CUENTA</string>
     <string name="header_workshop">TALLERES</string>
     <string name="news_article_date">Fecha</string>
+    <string name="share_to_intent">Compartir mediante...</string>
 </resources>

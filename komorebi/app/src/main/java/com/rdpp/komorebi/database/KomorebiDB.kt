@@ -16,8 +16,8 @@ class KomorebiDB(
                         "user TEXT UNIQUE, password TEXT, profilePicture TEXT, userType INTEGER )"
 
             val createArticlesTable =
-                "CREATE TABLE ${KomorebiDAO.TABLE_ARTICLES} (article_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "title TEXT UNIQUE, article TEXT, date TEXT, url TEXT)"
+                "CREATE TABLE ${KomorebiDAO.TABLE_ARTICLES} (article_Id TEXT PRIMARY KEY UNIQUE, " +
+                        "title TEXT UNIQUE, article TEXT, date TEXT, url TEXT, imgUrl TEXT)"
 
             val createWorkshopsTable =
                 "CREATE TABLE ${KomorebiDAO.TABLE_WORKSHOPS} (list_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +

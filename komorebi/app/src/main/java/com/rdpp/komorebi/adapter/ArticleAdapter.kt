@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.rdpp.komorebi.R
-import com.rdpp.komorebi.database.KomorebiDAO
 import com.rdpp.komorebi.databinding.NewsCardLayoutBinding
 import com.rdpp.komorebi.listener.ArticleEventListener
 import com.rdpp.komorebi.model.Article
@@ -22,10 +23,10 @@ class ArticleAdapter(
         val binding = NewsCardLayoutBinding.bind(view)
         fun setListener(position: Int, article: Article) {
             binding.btnShare.setOnClickListener {
-                TODO("COMPARTIR NOTICIA (BUSCAR EN GOOGLE, MAX PRIORIDAD)")
+                listener.shareArticle(article)
             }
             binding.btnView.setOnClickListener {
-                TODO("VISUALIZAR LA NOTICIA COMPLETA (FRAGMENT)")
+                listener.viewArticle(article)
             }
         }
     }
@@ -42,6 +43,8 @@ class ArticleAdapter(
             setListener(position, article)
             binding.txtTitle.text = article.name
             binding.txtDate.text = article.date
+            Glide.with(context).load(article.imgUrl).centerCrop().diskCacheStrategy(
+                DiskCacheStrategy.ALL).into(binding.imgArticle)
         }
     }
 
