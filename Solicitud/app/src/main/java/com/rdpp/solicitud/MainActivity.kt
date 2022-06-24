@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             fun llamada() {
-                val intentCall = Intent(Intent.ACTION_CALL, Uri.parse("tel:0034611686108"))
+                val intentCall = Intent(Intent.ACTION_CALL, Uri.parse("tel:+0034611686108"))
                 startActivity(intentCall)
             }
         }

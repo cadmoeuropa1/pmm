@@ -5,5 +5,7 @@ data class User(
     val user: String,
     val password: String,
     val uType: Int,
-    val profilePicture: String
+    val profilePicture: String,
+    val alias: String,
+    var emergencyContact: Contact? = null
 )

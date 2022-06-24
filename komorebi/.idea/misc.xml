@@ -14,6 +14,7 @@
         <entry key="..\:/Repositorios/pmm/komorebi/app/src/main/res/layout/activity_workshop.xml" value="0.33" />
         <entry key="..\:/Repositorios/pmm/komorebi/app/src/main/res/layout/news_card_layout.xml" value="0.3697916666666667" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1925" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/drawable/circle_button.xml" value="0.272" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/drawable/ic_chats.xml" value="0.272" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/drawable/ic_forum.xml" value="0.272" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/drawable/ic_information.xml" value="0.1925" />
@@ -21,15 +22,24 @@
         <entry key="..\:/pmm/komorebi/app/src/main/res/drawable/ic_login.xml" value="0.234" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/drawable/icono_komorebi_background.xml" value="0.272" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/drawable/round_button.xml" value="0.272" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_chats.xml" value="0.23958333333333334" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_forum.xml" value="0.3692708333333333" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_information.xml" value="0.3692708333333333" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_login.xml" value="0.3875" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_main.xml" value="0.3875" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_main_screen.xml" value="0.3875" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_news.xml" value="0.3697916666666667" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_profile.xml" value="0.3692708333333333" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/layout/activity_workshop.xml" value="0.3692708333333333" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/layout/header_menu_layout.xml" value="0.3875" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/layout/news_card_layout.xml" value="0.3697916666666667" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/layout/workshop_card_layout.xml" value="0.36822916666666666" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/menu/menu_main_screen.xml" value="0.3697916666666667" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/menu/menu_manin_screen.xml" value="0.3875" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/menu/menu_profile.xml" value="0.3692708333333333" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1925" />
         <entry key="..\:/pmm/komorebi/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1925" />
+        <entry key="..\:/pmm/komorebi/app/src/main/res/mipmap-anydpi-v26/icono_komorebi.xml" value="0.272" />
       </map>
     </option>
   </component>

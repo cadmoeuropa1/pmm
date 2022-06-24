@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/menu_contactSettings">
+        <item
+            android:id="@+id/mnu_ContactSettings"
+            android:title="@string/menu_edit_emergency_contact"
+            app:showAsAction="always">
+
+        </item>
+
+    </group>
+    <group android:id="@+id/menu_ChangeAlias">
+        <item
+            android:id="@+id/mnu_ChangeAlias"
+            android:title="@string/menu_edit_alias"
+            app:showAsAction="always">
+
+        </item>
+    </group>
+
+    <group android:id="@+id/menu_ChangeProfilePicture">
+        <item
+            android:id="@+id/mnu_ChangeProfilePicture"
+            android:title="@string/menu_edit_profile_picture"
+            app:showAsAction="always">
+
+        </item>
+    </group>
+
+</menu>

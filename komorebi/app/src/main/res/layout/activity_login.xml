@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,74 +9,55 @@
     tools:context=".view.Login">
 
     <ImageView
-        android:id="@+id/imgLogo"
+        android:id="@+id/imgEmergency"
         android:layout_width="125dp"
         android:layout_height="0dp"
         android:layout_marginTop="70dp"
-        app:layout_constraintBottom_toTopOf="@id/tilUser"
+        android:src="@mipmap/icono_komorebi"
+        app:layout_constraintBottom_toTopOf="@id/access_as"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/sos_image_button"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilUser"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/access_as"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="22dp"
-        android:hint="@string/user"
-        app:boxBackgroundColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/tilPassword"
+        android:layout_margin="8dp"
+        android:text="@string/access_as"
+        app:layout_constraintBottom_toTopOf="@id/btnInvited"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgLogo">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="22dp"
-        android:hint="@string/password"
-        app:boxBackgroundColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/btnLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilUser">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@id/imgEmergency" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnInvited"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:layout_marginBottom="150dp"
-        android:text="@string/login"
+        android:layout_marginBottom="300dp"
+        android:text="Invitada"
         android:textAllCaps="false"
         app:icon="@drawable/ic_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+        app:layout_constraintTop_toBottomOf="@id/access_as"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegistered"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="300dp"
+        android:layout_marginTop="48dp"
+        android:text="Registrada"
+        android:textAllCaps="false"
+        app:icon="@drawable/ic_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInvited"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

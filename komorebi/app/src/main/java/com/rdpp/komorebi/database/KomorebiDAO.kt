@@ -6,6 +6,8 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import com.rdpp.komorebi.model.Article
+import com.rdpp.komorebi.model.User
+import com.rdpp.komorebi.model.Workshop
 import java.util.*
 
 class KomorebiDAO(context: Context) {
@@ -19,6 +21,7 @@ class KomorebiDAO(context: Context) {
         const val TABLE_ARTICLES = "articles"
         const val TABLE_WORKSHOPS = "workshops"
         const val TABLE_FORUM = "forum"
+        const val TABLE_CONTACTS = "contacts"
     }
 
     init {
@@ -59,30 +62,45 @@ class KomorebiDAO(context: Context) {
                         "La víctima fue presuntamente asesinada por su cónyuge, español de 56 años. No tenía hijos ni hijas menores de edad y no existían denuncias previas por violencia de género. \n" +
                         "\n" +
                         "Este caso se consideró inicialmente como un suicidio, pero tras la investigación llevada a cabo se ha confirmado como crimen machista.",
-                "13/5/2022",
+                "13/05/2022",
                 "https://www.20minutos.es/noticia/4999670/0/el-gobierno-confirma-un-asesinato-por-violencia-machista-en-logrono-de-2020/",
                 "https://imagenes.20minutos.es/files/image_656_370/uploads/imagenes/2019/09/26/1076338.jpg"
+            )
+            insertWorkshop(
+                UUID.randomUUID().toString(),
+                "Taller de empoderamiento femenino para mujeres con discapacidad",
+                "Según el Informe sobre Discapacidad de la Organización Mundial de la Salud (OMS, 2011): «Las mujeres con discapacidad viven en una situación de subordinación e inferioridad en todas las partes del mundo». \n" +
+                        "\n" +
+                        "Si a ello se suma, por su vulnerabilidad, las diferentes situaciones de violencia y discriminación que sufren, se hace evidente que las mujeres con discapacidad que se encuentran en esta situación necesitan un apoyo para vencer ese miedo y conseguir una alta autoestima. \n" +
+                        "\n" +
+                        "En este sentido, a través de la implementación de diferentes talleres, se va a conseguir el empoderamiento.",
+                "18/06/2022",
+                "https://xarxamujeres.es/curso-de-empoderamiento-2/",
+                "https://xarxamujeres.es/wp-content/uploads/2016/03/Imagen-Impulsa22.png"
             )
             insertUser(
                 UUID.randomUUID().toString(),
                 "userP",
                 "user",
                 "https://tomaminabo.com/jpg",
-                0
+                0,
+                "alias1"
             )
             insertUser(
                 UUID.randomUUID().toString(),
                 "usuaria",
                 "alo",
                 "https://tomaminabo.com/jpg",
-                1
+                1,
+                "alias2"
             )
             insertUser(
                 UUID.randomUUID().toString(),
                 "user",
                 "pitopi",
                 "https://tomaminabo.com/jpg",
-                1
+                1,
+                "misteriosa"
             )
         } catch (e: Exception) {
             Log.e("ERROR:", e.message.toString())
@@ -113,7 +131,8 @@ class KomorebiDAO(context: Context) {
         user: String,
         password: String,
         profilePicture: String,
-        uType: Int
+        uType: Int,
+        alias: String
     ): Int {
         val values = ContentValues()
         values.put("user_Id", id)
@@ -121,8 +140,28 @@ class KomorebiDAO(context: Context) {
         values.put("password", password)
         values.put("profilePicture", profilePicture)
         values.put("userType", uType)
+        values.put("alias", alias)
 
         return database.insert(TABLE_USERS, null, values).toInt()
+    }
+
+    fun insertWorkshop(
+        id: String,
+        name: String,
+        workshop: String,
+        date: String,
+        url: String,
+        imgUrl: String
+    ): Int {
+        val values = ContentValues()
+        values.put("workshop_Id", id)
+        values.put("name", name)
+        values.put("workshop", workshop)
+        values.put("date", date)
+        values.put("url", url)
+        values.put("imgUrl", imgUrl)
+
+        return database.insert(TABLE_WORKSHOPS, null, values).toInt()
     }
 
     fun getAllArticles(): MutableList<Article> {
@@ -148,5 +187,64 @@ class KomorebiDAO(context: Context) {
             cursor.close()
         }
         return articles
+    }
+
+    fun getAllWorkshops(): MutableList<Workshop>? {
+        val workshops: MutableList<Workshop> = ArrayList()
+        val sql = "SELECT * FROM $TABLE_WORKSHOPS"
+        val cursor: Cursor = database.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            do {
+                workshops.add(
+                    Workshop(
+                        cursor.getString(cursor.getColumnIndexOrThrow("workshop_Id")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("workshop")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("date")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("url")),
+                        cursor.getString(cursor.getColumnIndexOrThrow("imgUrl"))
+                    )
+                )
+            } while (cursor.moveToNext())
+
+        }
+        if (cursor.isClosed) {
+            cursor.close()
+        }
+        return workshops
+    }
+
+    fun getInvitedUser(): User {
+        lateinit var user: User
+        val sql = "SELECT * FROM $TABLE_USERS WHERE user='invitada'"
+        val cursor: Cursor = database.rawQuery(sql, null)
+        if (cursor.moveToFirst()) {
+            user = User(
+                cursor.getString(cursor.getColumnIndexOrThrow("user_Id")),
+                cursor.getString(cursor.getColumnIndexOrThrow("user")),
+                cursor.getString(cursor.getColumnIndexOrThrow("password")),
+                cursor.getInt(cursor.getColumnIndexOrThrow("userType")),
+                cursor.getString(cursor.getColumnIndexOrThrow("profilePicture")),
+                cursor.getString(cursor.getColumnIndexOrThrow("alias"))
+            )
+        }
+
+        return user
+
+    }
+
+    fun updateAlias(user: User, alias: String) {
+        val sql = "UPDATE $TABLE_USERS SET alias = '$alias' WHERE user_Id = '${user.userId}'"
+        database.execSQL(sql)
+    }
+
+    fun updateProfilePicture(user: User, profilePicture: String) {
+        val sql =
+            "UPDATE $TABLE_USERS set profilePicture = '$profilePicture' WHERE user_Id = '${user.userId}'"
+        database.execSQL(sql)
+    }
+
+    fun deleteInvited(user: String): Int {
+        return database.delete(TABLE_USERS, "user=?", arrayOf(user))
     }
 }

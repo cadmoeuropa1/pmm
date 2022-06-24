@@ -13,25 +13,25 @@ class KomorebiDB(
         try {
             val createUsersTable =
                 "CREATE TABLE ${KomorebiDAO.TABLE_USERS} (user_Id TEXT PRIMARY KEY UNIQUE, " +
-                        "user TEXT UNIQUE, password TEXT, profilePicture TEXT, userType INTEGER )"
+                        "user TEXT UNIQUE, password TEXT, userType INTEGER, profilePicture TEXT, alias TEXT)"
 
             val createArticlesTable =
                 "CREATE TABLE ${KomorebiDAO.TABLE_ARTICLES} (article_Id TEXT PRIMARY KEY UNIQUE, " +
                         "title TEXT UNIQUE, article TEXT, date TEXT, url TEXT, imgUrl TEXT)"
 
             val createWorkshopsTable =
-                "CREATE TABLE ${KomorebiDAO.TABLE_WORKSHOPS} (list_Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "name TEXT UNIQUE)"
+                "CREATE TABLE ${KomorebiDAO.TABLE_WORKSHOPS} (workshop_Id TEXT PRIMARY KEY UNIQUE, " +
+                        "name TEXT UNIQUE, workshop TEXT, date TEXT, url TEXT, imgUrl TEXT)"
 
-            val createListsProductsTable =
-                "CREATE TABLE ${KomorebiDAO.TABLE_FORUM} (code INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "list_Id INTEGER, prod_Id INTEGER, quantity INTEGER)"
+            val createContactsTable =
+                "CREATE TABLE ${KomorebiDAO.TABLE_CONTACTS} (contact_Id TEXT PRIMARY KEY UNIQUE, " +
+                        "user_Id TEXT)"
 
 
             database!!.execSQL(createUsersTable)
             database.execSQL(createArticlesTable)
-            //database.execSQL(createWorkshopsTable)
-            //database.execSQL(createListsProductsTable)
+            database.execSQL(createWorkshopsTable)
+            database.execSQL(createContactsTable)
 
 
         } catch (e: SQLException) {
