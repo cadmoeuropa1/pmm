@@ -1,6 +1,7 @@
 package com.rdpp.komorebi.view
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -37,15 +38,18 @@ class NewsActivity : AppCompatActivity(), ArticleEventListener {
     }
 
     override fun shareArticle(article: Article) {
+
         val shareIntent = Intent()
         with(shareIntent) {
             action = Intent.ACTION_SEND
-            putExtra("url", article.url)
+            setType("text/plain")
+            putExtra(Intent.EXTRA_TEXT, article.url)
         }
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_to_intent)))
     }
 
     override fun viewArticle(article: Article) {
-        super.viewArticle(article)
+        val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(article.url))
+        startActivity(viewIntent)
     }
 }

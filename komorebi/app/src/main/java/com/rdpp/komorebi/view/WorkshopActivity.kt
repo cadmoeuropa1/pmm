@@ -1,6 +1,7 @@
 package com.rdpp.komorebi.view
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -39,13 +40,15 @@ class WorkshopActivity : AppCompatActivity(), WorkshopEventListener {
         val shareIntent = Intent()
         with(shareIntent) {
             action = Intent.ACTION_SEND
-            putExtra("url", workshop.url)
+            setType("text/plain")
+            putExtra(Intent.EXTRA_TEXT, workshop.url)
         }
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_to_intent)))
     }
 
     override fun viewWorkshop(workshop: Workshop) {
-        super.viewWorkshop(workshop)
+        val intentView = Intent(Intent.ACTION_VIEW, Uri.parse(workshop.url))
+        startActivity(intentView)
     }
 
 

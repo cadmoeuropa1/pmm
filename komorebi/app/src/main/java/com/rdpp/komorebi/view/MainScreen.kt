@@ -1,14 +1,19 @@
 package com.rdpp.komorebi.view
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.Window
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import com.rdpp.komorebi.GlobalVariables
 import com.rdpp.komorebi.R
 import com.rdpp.komorebi.databinding.ActivityMainScreenBinding
@@ -33,6 +38,49 @@ class MainScreen : AppCompatActivity() {
         binding.topAppBar.setNavigationOnClickListener {
             binding.drawerLayout.open()
         }
+
+        binding.imgProfile.setOnLongClickListener {
+            //Comprobar si se tiene permiso
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) !=
+                PackageManager.PERMISSION_GRANTED
+            ) {
+                Snackbar.make(
+                    binding.rootLayout, "Permiso No Concedido",
+                    Snackbar.LENGTH_LONG
+                ).show()
+                //conceder permiso
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        Manifest.permission.CALL_PHONE
+                    )
+                ) {
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Permiso para realizar llamadas")
+                    builder.setMessage("Este permiso es indispensable para que la aplicación se ejecute y funcione correctamente")
+                    builder.setPositiveButton("Aceptar") { _, _ ->
+                        ActivityCompat.requestPermissions(
+                            this,
+                            arrayOf(Manifest.permission.CALL_PHONE), 123
+                        )
+                    }
+                    builder.setNegativeButton("Cancelar", null)
+                    builder.show()
+                } else {
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.CALL_PHONE), 123
+                    )
+                }
+            } else {
+                Snackbar.make(
+                    binding.rootLayout, "Llamando a al servicio de emergencias...",
+                    Snackbar.LENGTH_LONG
+                ).show()
+                makeCall()
+            }
+            false
+        }
+
 
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -106,5 +154,10 @@ class MainScreen : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun makeCall() {
+        val intentCall = Intent(Intent.ACTION_CALL, Uri.parse("tel:0034112"))
+        startActivity(intentCall)
     }
 }
